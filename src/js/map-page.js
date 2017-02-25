@@ -11,6 +11,7 @@ var options = optionsLatLng ? {center: optionsLatLng, zoom:18} : {};
 MapHandler.boot(options);
 google.maps.event.addDomListener(window, "load", MapHandler.initMap);
 
+$("#loading").show();
 LANG.boot();
 Indicator.boot();
 $("body")
@@ -20,7 +21,8 @@ $("body")
 		require("js/map-infowindow-layer");
 	})
 	.on("dataSourceLoadCompelete", function(e, source, data){
-		siteTool.loadSites(data);		
+		siteTool.loadSites(data);
+		$("#loading").hide();
 	});
 
 
