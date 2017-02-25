@@ -1,0 +1,68 @@
+application: taiwan-airmap
+version: 4
+runtime: php55
+api_version: 1
+threadsafe: yes
+
+handlers:
+  
+#image
+- url: /image/(.*\.(bmp|gif|ico|jpeg|jpg|png))
+  static_files: assets/image/\1
+  upload: assets/image/(.*\.(bmp|gif|ico|jpeg|jpg|png))
+
+#css
+- url: /css/(.*\.css)
+  static_files: assets/dist/\1
+  upload: assets/dist/(.*\.css)
+  mime_type: text/css
+
+#js
+- url: /js/(.*\.js)
+  static_files: assets/dist/\1
+  upload: assets/dist/(.*\.js)
+  mime_type: application/javascript
+
+#scripts
+- url: /script/(.*)
+  script: script/\1
+- url: /image/markerIcon/.*
+  script: script/icon/make.php
+
+#static html
+- url: /recruit
+  static_files: html/recruit.html
+  upload: html/recruit.html
+  secure: always
+  
+- url: /about
+  static_files: html/about.html
+  upload: html/about.html
+  secure: always
+
+- url: /list
+  static_files: html/list.html
+  upload: html/list.html
+  secure: always
+  
+- url: /site
+  static_files: html/site.html
+  upload: html/site.html
+  secure: always
+
+- url: /.*
+  static_files: html/map.html
+  upload: html/map.html
+  secure: always
+
+
+error_handlers:
+  - error_code: over_quota
+    file: html/over_quota.html  
+
+skip_files:
+- ^(.*/)?.*/node_modules/.*$
+- ^(node_modules/.*)
+- ^(.git/.*)
+- ^(src/.*)
+- \.map$

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Over Quota</title>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+	<style>
+		.block-msg{
+			text-align: center;
+			width:100%;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+			.block-msg .content{
+				display: inline-block;
+				text-align: left;
+			}
+	</style>
+</head>
+<body>
+	<div id="no-content" class="container block-msg">
+		<div class="content">
+			<h1>
+				<span class="glyphicon glyphicon-warning-sign"></span>
+				此網站已超過免費額度
+			</h1>
+			<h3>
+				五秒鐘之後會自動切換至備援站，
+			</h3>
+			<h3>
+				或者您可以直接<a href="https://airmap.asper.tw/">點選此處</a>直接前往。
+			</h3>
+			<h5>
+				註: 免費額度約在台灣時間下午四點重設，屆時可恢復正常服務。
+			</h5>
+			<hr>
+			<h1>
+				<span class="glyphicon glyphicon-warning-sign"></span>
+				This site is over quota.
+			</h1>
+			<h3>
+				After 5 seconds will redirect to backup site.
+			</h3>
+			<h3>
+				or <a href="https://airmap.asper.tw/"> you can click this goto backup site</a>.
+			</h3>
+			<h5>
+				Note: Quota for free will be reset about at UTC 6 o'clock, this website will be back to work after reset.
+			</h5>
+		</div>
+	</div>
+
+	<script>
+	setTimeout(function(){
+		location = "https://airmap.asper.tw";
+	}, 5000);
+	</script>
+</body>
+</html>
