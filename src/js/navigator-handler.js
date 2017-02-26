@@ -14,7 +14,7 @@ require("js/navigator-switch-handler");
 var Navigator = new Vue({
 	el: '#navigator',
 	data: {
-		open: true,
+		open: false,
 		activeItem: 'siteLayer',
 		site: {
 			category: [],
