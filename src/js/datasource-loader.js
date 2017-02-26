@@ -3,7 +3,6 @@ var DataSource = {
 	autoUpdateTS: null,
 	autoUpdateIntervalms: 5 * 60 * 1000,
 	sources: [
-		// "/json/airmap.json",
 		"https://datasource.airmap.asper.tw/airmap.json"
 	],
 	boot: function(){
@@ -11,6 +10,11 @@ var DataSource = {
 		this.autoUpdate(true);
 	},
 	loadSources: function(){
+		if( !this.sources.length ){
+			$("body").trigger("dataSourceLoadCompelete");
+			return;
+		}
+
 		this.sources.map(function(source){
 			this.load(source);
 		}.bind(this));

@@ -125,6 +125,24 @@ var siteTool = (function(){
 				colors: colors,
 			}	
 		},
+		search: function(string){
+			if( !string || !string.length ){ return {}; }
+
+			var results = [];
+			sites.map(Site => {
+				var searched = Site.match(string);
+				if(searched){
+					searched.map(value => {
+						results.push({
+							name: value,
+							instance: Site,
+						});
+					});
+				}
+			});
+			
+			return results;
+		}
 	}
 })();
 

@@ -19,12 +19,12 @@ $("body")
 		DataSource.boot();
 		siteTool.boot();
 		require("js/map-infowindow-layer");
+		require("js/typeahead");
 	})
 	.on("dataSourceLoadCompelete", function(e, source, data){
 		siteTool.loadSites(data);
 		$("#loading").hide();
 	});
-
 
 function getUrlLatLng(){
 	var param = location.href.replace(location.protocol + '//' + location.host + '/', '');

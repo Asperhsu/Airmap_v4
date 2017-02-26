@@ -33,6 +33,33 @@ Site.prototype.isValid = function(){
 	return true;
 };
 
+Site.prototype.match = function(search){
+	if( !search || !search.length ){ return false; }
+	search = search.toLowerCase();
+	var matched = [];
+
+	if( this.getProperty('SiteName').toLowerCase().indexOf(search) > -1 ){
+		matched.push(this.getProperty('SiteName'));
+	}
+
+	if( this.getProperty('SiteGroup').toLowerCase().indexOf(search) > -1 ){
+		matched.push(this.getProperty('SiteGroup'));
+	}
+
+	if( this.getProperty('uniqueKey').toLowerCase().indexOf(search) > -1 ){
+		var value = this.getProperty('uniqueKey');
+		if( matched.indexOf(value) == -1 ){
+			matched.push(value);
+		}
+	}
+
+	if( this.getProperty('Maker').toLowerCase().indexOf(search) > -1 ){
+		matched.push(this.getProperty('Maker'));
+	}
+
+	return matched.length ? matched : false;
+};
+
 
 /**
  * ===================

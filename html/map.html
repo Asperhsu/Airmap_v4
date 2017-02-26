@@ -9,7 +9,7 @@
 		<meta property="og:description" content="g0v Realtime Air Pollution Map">
 		<meta property="og:type" content="website">
 		<meta property="og:url" content="https://airmap.g0v.asper.tw/">
-		<meta property="og:image" content="https://i.imgur.com/GtVvd4P.png">
+		<meta property="og:image" content="https://i.imgur.com/Tv1rgZO.jpg">
 
 		<title data-lang="pageTitle">g0v零時空汙觀測網</title>
 		<link rel='shortcut icon' type='image/x-icon' href='https://i.imgur.com/Gro4juQ.png' />
@@ -70,16 +70,15 @@
 						</div>
 					</div>
 
-					<!-- <div class="map-search">
+					<div class="map-search">
 						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Search Map">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">
-									<span class="glyphicon glyphicon-search"></span>
-								</button>
+							<span class="input-group-addon">
+								<span class="glyphicon glyphicon-search"></span>
 							</span>
+							<input type="text" class="form-control typeahead" placeholder="Search Map" 
+								data-provide="typeahead" autocomplete="off">
 						</div>
-					</div> -->
+					</div>
 				</div>
 
 				<ul class="list-group">
@@ -320,17 +319,18 @@
 		</div>
 	
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDRRT8it4AZpwbORhHeqoi2qrWDmQqD48"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDRRT8it4AZpwbORhHeqoi2qrWDmQqD48&libraries=places"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 		<script src="https://www.gstatic.com/charts/loader.js"></script>
 		<script>google.charts.load('current', {'packages':['corechart']});</script>
 
-		<!-- <script src="/js/vendor-common.js"></script>
+		<script src="/js/vendor-common.js"></script>
 		<script src="/js/vendor-map.js"></script>
-		<script src="/js/map.js"></script> -->
+		<script src="/js/map.js"></script>
 
-		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-common.js"></script>
+		<!-- <script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-common.js"></script>
 		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-map.js"></script>
-		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/map.js"></script>
+		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/map.js"></script> -->
 
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
