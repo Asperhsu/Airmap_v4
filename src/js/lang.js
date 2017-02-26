@@ -19,14 +19,9 @@ var LANG = {
 			"siteChart": "Site Chart",			
 			"siteComment": "Site Comment",
 			"measureType": "Measure Type",
-			"voronoiDiagram": "Voronoi Diagram",
-			"windLayer": "Wind Layer",
-			"windResourceAlert": "Wind layer consume lots resources, easy to cause browser crash. at your discretion.",
+			"voronoiDiagram": "Voronoi Diagram",			
 			"lastUpdate": "Last update",
 			"halfHourUpdate": "update at half clock",
-
-			"windFillOpacity": "Wind opacity",
-			"windMoveSpeed": "Wing flow speed",
 
 			"resourceLayer": "Resource Layer",
 			"emissionLayer": "Emission",
@@ -41,15 +36,18 @@ var LANG = {
 			"lastWeekChart": "Last week chart",
 			"lastMonthChart": "Last month chart",
 
+			"externalLink": "External Link",
+
 			"ranking": "Data Reliability",
 			"historyChart": "History Chart",
 			"independentPage": "Independent Page",
 
+			"visibleSiteCount": "Visible site count",
 			"disclaimer": "This map provide visualize from public data, do not guarantee data accuracy.",
 		},
 		"zh-TW":{
 			"pageTitle": "g0v零時空汙觀測網",
-			"recruit": "自造站點持續募集中",
+			"recruit": "自造站點募集中",
 
 			"group": "群組",
 			"display": "顯示",
@@ -64,13 +62,8 @@ var LANG = {
 			"siteComment": "測站討論",
 			"measureType": "量測類別",
 			"voronoiDiagram": "勢力地圖",
-			"windLayer": "風力線",
-			"windResourceAlert": "風力線十分消耗資源，容易造成瀏覽器當機，請斟酌使用。",
 			"lastUpdate": "資料時間",
 			"halfHourUpdate": "半整點更新資料",
-
-			"windFillOpacity": "線條亮度",
-			"windMoveSpeed": "移動速度",
 
 			"resourceLayer": "資源圖層",
 			"emissionLayer": "固定汙染源",
@@ -85,10 +78,13 @@ var LANG = {
 			"lastWeekChart": "過去一週歷史數值",
 			"lastMonthChart": "過去一個月歷史數值",
 
+			"externalLink": "資源連結",
+
 			"ranking": "資料可信度",
 			"historyChart": "歷史圖表",
 			"independentPage": "站點詳細頁面",
 
+			"visibleSiteCount": "可見站點數量",
 			"disclaimer": "本零時空汙觀測網僅彙整公開資料提供視覺化參考，並不對資料數據提供保證，實際測值以各資料來源為準。",
 		}
 	},
@@ -120,18 +116,26 @@ var LANG = {
 
 		if( $el.is("input:button") ){
 			$el.val(text);
+			return;
 		}
 
 		if( $el[0].hasAttribute("title") ){
 			$el.attr('title', text);
+			return;
 		}
 
 		if( !$el.children().length ){
 			$el.text(text);
+			return;
 		}
 	},
-	translateApp: function(){
-		$("[data-lang]").each(function(){
+	translateApp: function($container){
+		var $target = $("[data-lang]");
+		if( $container ){
+			$target = $container.find("[data-lang]");
+		}
+
+		$target.each(function(){
 			LANG.translateElement($(this), $(this).data('lang'));
 		});
 		return this;

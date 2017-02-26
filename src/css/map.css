@@ -39,13 +39,14 @@ html, body{
 	opacity: 0.9;
 	display: inline-block;
 	position: absolute;
-	left: 180px;
-	top: 0.5em;
+	left: 170px;
+	top: 0.6em;
 	z-index: 80;
 	cursor: pointer;
 }
 #recruit .popover-content{
 	padding: 3px 8px;
+	font-size: 0.8em;
 }
 
 #map-container{

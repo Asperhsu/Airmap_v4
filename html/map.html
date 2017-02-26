@@ -14,7 +14,6 @@
 		<title data-lang="pageTitle">g0v零時空汙觀測網</title>
 		<link rel='shortcut icon' type='image/x-icon' href='https://i.imgur.com/Gro4juQ.png' />
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-		
 		<link rel="stylesheet" href="css/map.css">
 		<!-- <link rel="stylesheet" href="https://rawgit.com/Aspertw/Airmap_v3/master/assets/dist/map.css"> -->
 		<style>
@@ -52,7 +51,7 @@
 			<div id="recruit">
 				<a href='/recruit' class="popover right">
 					<div class="arrow"></div>
-					<div class="popover-content" data-lang="recruit">自造站點持續募集中</div>
+					<div class="popover-content" data-lang="recruit">自造站點募集中</div>
 				</a>
 			</div>
 		
@@ -63,12 +62,36 @@
 					<span v-show="open" class="glyphicon glyphicon-triangle-left"></span>
 					<span v-show="!open" class="glyphicon glyphicon-triangle-right"></span>
 				</button>
+
 				<div class="header">
-					<div style="text-align: right">
-						<input type="checkbox" class="bs-switch" id="languageSwitch" checked="checked" data-size="mini" data-off-text="中文" data-on-text="En" data-on-Color="default" data-off-Color="default">
+					<div class="logo-side">
+						<div class="lang-switch">
+							<input type="checkbox" class="bs-switch" id="languageSwitch" checked="checked" data-size="mini" data-off-text="中文" data-on-text="En" data-on-Color="default" data-off-Color="default">
+						</div>
 					</div>
+
+					<!-- <div class="map-search">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Search Map">
+							<span class="input-group-btn">
+								<button class="btn btn-default" type="button">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>
+						</div>
+					</div> -->
 				</div>
+
 				<ul class="list-group">
+					<li class="list-group-item" data-name="siteList" >
+						<h4 class="list-group-item-heading">
+							<span data-lang="siteList">站點清單</span>
+							<a href='/list' class="pull-right btn btn-primary btn-xs" target="_blank">
+								&nbsp;<span class="glyphicon glyphicon-list-alt"></span>&nbsp;
+							</a>
+						</h4>
+					</li>
+
 					<li class="list-group-item" data-name="siteLayer" >
 						<h4 class="list-group-item-heading" v-on:click="changeActiveItem">
 							<span data-lang="siteFilter">測量站點</span>
@@ -129,13 +152,6 @@
 									</span>
 									<input type="text" data-provide="slider" data-slider-min="1" data-slider-max="10" data-slider-step="1" lang="zh-tw" v-model="site.voronoiLayerOpacity">
 								</div>
-							</div>
-
-							<div class="blockquote">
-								<span class="title">
-									<span class="glyphicon glyphicon-list-alt"></span>
-									<a href='/list' target="_blank" data-lang="siteList">站點清單</a>
-								</span>
 							</div>
 						</div>
 					</li>
@@ -198,7 +214,7 @@
 						</h4>
 						<div class="list-group-item-text" v-show="showItemText('siteChart')" transition="slide">
 							<div class="loading"  
-							     v-bind:style="{display: site.chartLoading ? 'block' : 'none'}">
+								 v-bind:style="{display: site.chartLoading ? 'block' : 'none'}">
 								<div class="spinner">
 									<div class="rect1"></div>
 									<div class="rect2"></div>
@@ -248,7 +264,7 @@
 
 					<li class="list-group-item" data-name="externalLink">
 						<h4 class="list-group-item-heading" v-on:click="changeActiveItem">
-							<span data-lang="">資源連結</span>
+							<span data-lang="externalLink">資源連結</span>
 						</h4>
 						<div class="list-group-item-text" v-show="showItemText('externalLink')" transition="slide">
 							<fieldset>
@@ -289,15 +305,18 @@
 								<img src="https://i.imgur.com/bUFhdYA.png">
 							</a>
 						</p>
-						<p class="about">Asper &copy; 2016 &nbsp;&nbsp;<a href="/about">About this Website</a></p>
-						<p class="blog"><a href="https://g0vairmap.blogspot.tw/" target="_blank">g0v空汙網的攻城獅日記</a></p>
+						<p class="about">Asper &copy; 2017 &nbsp;&nbsp;<a href="/about">About</a></p>
+						<p class="link">
+							<a href="https://g0vairmap.blogspot.tw/" target="_blank">g0v空汙網的攻城獅日記</a> |
+							<a href="https://www.facebook.com/g0vairmap/" target="_blank">Facebook Page</a>
+						</p>
 					</li>
 				</ul>
 			</div>
 
 			<div id="indicatorLevel"></div>
 
-			<div id="info-on-map" title="Visible site count"></div>
+			<div id="info-on-map" data-lang="visibleSiteCount" title="Visible site count"></div>
 		</div>
 	
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
@@ -305,13 +324,13 @@
 		<script src="https://www.gstatic.com/charts/loader.js"></script>
 		<script>google.charts.load('current', {'packages':['corechart']});</script>
 
-		<script src="/js/vendor-common.js"></script>
+		<!-- <script src="/js/vendor-common.js"></script>
 		<script src="/js/vendor-map.js"></script>
-		<script src="/js/map.js"></script>
+		<script src="/js/map.js"></script> -->
 
-		<!-- <script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-common.js"></script>
+		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-common.js"></script>
 		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-map.js"></script>
-		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/map.js"></script> -->
+		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/map.js"></script>
 
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

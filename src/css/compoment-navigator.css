@@ -2,24 +2,41 @@
 	position: absolute; 
 	top: 0; left:-1000px; 
 	width: 87%; max-width: 400px;
-	height: 99.0%;
+	height: 100.0%;
 	z-index:90; 
 	background: #fff;
 	border-radius: 0 10px 10px 0;
+	opacity: .85;
+	cursor: default;
 }
 	.header{ padding: 8px 15px; }
+		.logo-side { 
+			padding-left:170px; 
+			text-align:right; 
+		}
+			.logo-side > div {
+				display: inline-block;
+				margin: 0 3px;
+			}
+			.site-list {
+				font-size: 1.1em;
+				vertical-align: bottom;
+			}
+
+		.map-search { padding-top: 1em; }
+
 	.navbar-toggle{ 
 		display: block; 
 		position:absolute; 
 		top: 40px; right: -45px; 
-		border:1px solid #aaa;
 		padding: 9px 8px; 
 		background-color: #fff;
 		border-radius: 0;
+		box-shadow: 3px 0 3px 0px #aaa;
 	}
 	.navbar-toggle .icon-bar { background-color: #aaa; }
 
-	.list-group{ height: calc(100% - 40px); overflow-y: auto; overflow-x: hidden; }
+	.list-group{ height: calc(100% - 100px); overflow-y: auto; overflow-x: hidden; }
 		
 		.list-group-item { padding-top: 0; padding-bottom: 0; border-left: 0; border-right: 0;}
 		.list-group-item .bootstrap-switch{ float:right; }
@@ -28,18 +45,16 @@
 
 		.list-group-item-text { margin-top: 10px; }		
 			.blockquote{ border-left: 5px solid #eee; padding: 0px 10px 0px 10px; margin-bottom:10px;}
-			.blockquote .title{ display:inline-block; padding: 10px 20px 10px 0;  }
-			.blockquote-content { margin-left: 1em; }
+			/*.blockquote .title{ display:inline-block; padding: 10px 20px 10px 0;  }*/
+			.blockquote > .title{ display:inline-block; padding: 10px 20px 10px 0; font-size: 1.1em; }
+
+			.blockquote-content { margin-left: 1em; margin-bottom: 1em; }
 			.blockquote-content > .blockquote{ border-left: 0px; margin-top:0;}
+			.blockquote-content > .blockquote > .title{ font-size: 1em; }
 
 		.list-group-item .btn-site{
 			width:45%; min-width:10em; margin: 3px 1%;
 		}
-			/*.list-group-item .btn-site > .badge{
-				padding: 2px 4px;
-				font-weight: auto;
-				font-size: 0.8em;
-			}*/
 
 			.list-group-item .btn-site .count{
 				float: left;
@@ -85,7 +100,7 @@
 
 		li#footer{
 			padding:10px;
-			font-size:0.8em;
+			font-size:0.9em;
 			color:#8E9090;
 			margin-top:2em;
 		}

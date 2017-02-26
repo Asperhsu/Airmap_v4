@@ -54,7 +54,7 @@ InfoWindowLayer.prototype.onAdd = function() {
 		'<div id="' + this.containerID + '" >',
 			'<div class="arrow"></div>',
 			'<div class="iw-header">',
-				'<div class="ranking" title=":ranking"></div>',
+				'<div class="ranking" data-lang="ranking" title="ranking"></div>',
 				'<div class="update-at">Updated <span class="time"></span> ago.</div>',
 			'</div>',
 			'<div class="iw-content">',
@@ -67,20 +67,16 @@ InfoWindowLayer.prototype.onAdd = function() {
 			'<div class="iw-footer">',
 				'<div class="iw-name"></div>',
 				'<div class="iw-link">',
-					'<a class="line-chart" title=":historyChart">',
+					'<a class="line-chart" data-lang="historyChart" title="historyChart">',
 						'<span class="glyphicon glyphicon-stats"></span>',
 					'</a>',
-					'<a href="" target="_blank" class="indep-page" title=":independentPage">',
+					'<a href="" target="_blank" class="indep-page" data-lang="independentPage" title="independentPage">',
 						'<span class="glyphicon glyphicon-bookmark"></span>',
 					'</a>',
 				'</div>',
 			'</div>',
 		'</div>'
-	].join('')
-	.replace(':ranking', LANG.get('ranking'))
-	.replace(':historyChart', LANG.get('historyChart'))
-	.replace(':comment', LANG.get('siteComment'))
-	.replace(':independentPage', LANG.get('independentPage'));
+	].join('');
 
 	this.div = $(html)[0];
 
@@ -138,6 +134,7 @@ InfoWindowLayer.prototype.draw = function() {
 	var div = this.div;
 	div.style.left = (point.x - width/2)+ 'px';
 	div.style.top = (point.y - height - arrowHeight) + 'px';
+	LANG.translateApp($div);
 };
 InfoWindowLayer.prototype.onRemove = function() {
 	this.div.parentNode.removeChild(this.div);
