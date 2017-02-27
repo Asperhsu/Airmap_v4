@@ -204,7 +204,7 @@ function initLocation(Site){
 		zoom: 16
 	});
 
-	var marker = new google.maps.Marker({
+	new google.maps.Marker({
 		position: position,
 		map: map,
 	});

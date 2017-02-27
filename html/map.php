@@ -70,8 +70,8 @@ $msg = getMsg();
 							<span class="input-group-addon">
 								<span class="glyphicon glyphicon-search"></span>
 							</span>
-							<input type="text" class="form-control typeahead" placeholder="Search Map" 
-								data-provide="typeahead" autocomplete="off">
+							<input type="text" id="typeahead" class="form-control typeahead" placeholder="Search Map" 
+								autocomplete="off">
 						</div>
 					</div>
 				</div>
@@ -322,7 +322,6 @@ $msg = getMsg();
 	
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDRRT8it4AZpwbORhHeqoi2qrWDmQqD48&libraries=places"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>
 		<script src="https://www.gstatic.com/charts/loader.js"></script>
 		<script>google.charts.load('current', {'packages':['corechart']});</script>
 

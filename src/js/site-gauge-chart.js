@@ -83,7 +83,6 @@ var GaugeChart = {
 			return this.options[config.size];
 		}
 
-		var applyOption = null;
 		var sizeDiff = {};
 
 		//auto setting

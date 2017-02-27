@@ -44,17 +44,6 @@ var siteTool = (function(){
 		$("#info-on-map").text(sitesCountInView);
 	}
 
-	var boot = function(){
-		//bind events
-		MapHandler.addListener('bounds_changed', function(){
-			calcSitesInView();
-		});
-
-		$("body").on("site_changeCategory", function(e, actives){
-			calcSitesInView();
-		});
-	}	
-
 	return {
 		boot: function(){
 			//bind events
@@ -83,9 +72,7 @@ var siteTool = (function(){
 			if(!data || !data.length){ return false; }
 			clear();
 
-			var validSiteCount = 0;
 			var markers = [];
-
 			for(var i in data){
 				var site = new Site(data[i]);
 				if( !site.isValid() ){ continue; }

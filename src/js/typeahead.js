@@ -1,3 +1,6 @@
+require("css/typeahead.css");
+require("js/bootstrap3-typeahead.js");
+
 var siteTool 			= require("js/site-tool");
 var MapApi 				= MapHandler.getApi();
 var MapInstance 		= MapHandler.getInstance();
@@ -31,15 +34,31 @@ function placeToLatLng(placeID){
 }
 
 
-var $input = $(".typeahead");
+var $input = $("#typeahead");
+var cacheQuery = null;
+var cachePlaceLatLng = [];
 $input.typeahead({
 	source: function(query, callback){
-		var sites = siteTool.search(query);
+		var sources = [];
 
-		getPlaceLatLng(query).then(placeIDs => {
-			callback(sites.concat(placeIDs));
-		});
+		//sites info
+		var sites = siteTool.search(query);
+		sources = sources.concat(sites);
+
+		if( cacheQuery === null || (query.indexOf(cacheQuery) == -1 && cacheQuery.indexOf(query) == -1) ){
+			//query prefix is same, don't fetch placeIDs
+			getPlaceLatLng(query).then(placeIDs => {
+				cachePlaceLatLng = placeIDs;
+				sources = sources.concat(placeIDs);
+				callback(sources);
+			});
+		}else{
+			sources = sources.concat(cachePlaceLatLng);
+			callback(sources);
+		}
+		cacheQuery = query;
 	},
+	items: 'all',
 	autoSelect: true,
 	fitToElement: true,
 	minLength: 3,
