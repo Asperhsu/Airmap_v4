@@ -1,3 +1,8 @@
+.gauge-no-data {
+	color: #333;
+	font-size: 1.3em;
+}
+
 .d3-gauge .label{
 	fill:  #666;
 }

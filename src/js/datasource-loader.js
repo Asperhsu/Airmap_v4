@@ -15,25 +15,31 @@ var DataSource = {
 			return;
 		}
 
-		this.sources.map(function(source){
-			this.load(source);
-		}.bind(this));
+		var jobs = [];
+
+		this.sources.map(source => {
+			jobs.push(this.fetch(source));
+		});
+
+		Promise.all(jobs).then(results => {
+			var merged = [].concat.apply([], results);
+			$("body").trigger("dataSourceLoadCompelete", [merged]);
+		});
 	},
-	load: function(source){
-		$.getJSON(source).done(function(data){
-			$("body").trigger("dataSourceLoadCompelete", [source, data]);
-		});	
-	},
-	update: function(source){
-		this.load(source);
+	fetch: function(source){
+		return new Promise((resolve, reject) => {
+			$.getJSON(source).done(function(data){
+				resolve(data);
+			});
+		});
 	},
 	autoUpdate: function(flag){
 		this.autoUpdateFlag = !!flag;
 
 		if( this.autoUpdateFlag ){
-			this.autoUpdateTS = setInterval(function(){
+			this.autoUpdateTS = setInterval(() => {
 				this.loadSources();
-			}.bind(this), this.autoUpdateIntervalms)
+			}, this.autoUpdateIntervalms)
 		}else{
 			clearInterval(this.autoUpdateTS);
 		}

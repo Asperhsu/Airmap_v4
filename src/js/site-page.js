@@ -41,7 +41,7 @@ $("#sidebar li > a").click(function(){
 });
 
 function loadLastest(firstTime){
-	$("#loading").show();
+	$("#loading").show().find(".msg").text("Loading Site Lastest Record");
 	siteHelper.fetchLastest(siteInfo.group, siteInfo.id).then(function(Site){
 		if( Site === null ){
 			throw "Site Not Found";

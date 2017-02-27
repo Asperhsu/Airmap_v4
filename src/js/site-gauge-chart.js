@@ -47,17 +47,28 @@ var GaugeChart = {
 	},	
 	draw: function(userOptions){
 		var config = this.getConfig(userOptions);
-
 		var data = this.getData(config);
-		if( data === false){ return false; }
-
+		
+		//clear content, prevent show previous value
 		var $target = $(config.element);
+		$target.html('');
+
+		if( data === false ){ 
+			var html = [
+				'<div class="gauge-no-data">',
+					'<span class="glyphicon glyphicon-question-sign"></span>',
+					'&nbsp;No Data',
+				'</div>',
+			].join('');
+			$target.html(html)
+			return false; 
+		}
+
 		var sizeSetting = this.getSizeSetting(config);
 		var colorOptions = this.getColorOptions(config);
 		var clazz = [sizeSetting.clazz, colorOptions.clazz].join(' ');
 		var options = Object.assign({}, sizeSetting, colorOptions, {clazz: clazz} );
 
-		$target.children().remove();
 		config.instance = d3gauge($target[0], options);
 		config.instance.write(data);
 
@@ -65,7 +76,7 @@ var GaugeChart = {
 	},
 	getData: function(config){
 		var value = config.site.getMeasure(config.measureType);
-		return (typeof value == "number") ? value : false;
+		return isNaN(value) ? false : +value;
 	},
 	getSizeSetting: function(config){
 		if(typeof this.options[config.size] !== "undefined"){
