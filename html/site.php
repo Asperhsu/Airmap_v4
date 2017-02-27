@@ -1,9 +1,11 @@
+<?php require("html/common.php"); ?>
 <!DOCTYPE html>
 <html lang="">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		
 		<meta property="og:title" content="g0v零時空汙觀測網 站點詳細資料">
 		<meta property="og:description" content="g0v Realtime Air Pollution Mesure Site Detail">
 		<meta property="og:type" content="website">
@@ -12,10 +14,7 @@
 		<title>g0v零時空汙觀測網 站點詳細資料</title>
 		<link rel='shortcut icon' type='image/x-icon' href='https://i.imgur.com/Gro4juQ.png' />
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-
-		<link rel="stylesheet" href="css/site.css">
-		<!-- <link rel="stylesheet" href="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/site.css"> -->
-
+		<link rel="stylesheet" href="<?=asset('css', 'site.css')?>">
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -236,23 +235,12 @@
 		<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCDRRT8it4AZpwbORhHeqoi2qrWDmQqD48"></script>
 		<script src="https://www.gstatic.com/charts/loader.js"></script>
 		<script>google.charts.load('current', {'packages':['corechart']});</script>
-	
-		<!-- <script src="/js/vendor-common.js"></script>
-		<script src="/js/vendor-map.js"></script>
-		<script src="/js/site.js"></script> -->
 
-		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-common.js"></script>
-		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-map.js"></script>
-		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/site.js"></script>
+		<script src="<?=asset('js', 'vendor-common.js')?>"></script>
+		<script src="<?=asset('js', 'vendor-map.js')?>"></script>
+		<script src="<?=asset('js', 'site.js')?>"></script>
 
- 		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-			ga('create', 'UA-55384149-4', 'auto');
-			ga('send', 'pageview');
-		</script>
+		<?=showGACode();?>
 	</body>
 </html>
 	

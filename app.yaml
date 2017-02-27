@@ -41,18 +41,15 @@ handlers:
   secure: always
 
 - url: /list
-  static_files: html/list.html
-  upload: html/list.html
+  script: html/list.php
   secure: always
   
 - url: /site
-  static_files: html/site.html
-  upload: html/site.html
+  script: html/site.php
   secure: always
 
 - url: /.*
-  static_files: html/map.html
-  upload: html/map.html
+  script: html/map.php
   secure: always
 
 

@@ -1,3 +1,4 @@
+<?php require("html/common.php"); ?>
 <!DOCTYPE html>
 <html lang="">
 	<head>
@@ -15,7 +16,7 @@
 		<link rel='shortcut icon' type='image/x-icon' href='https://i.imgur.com/Gro4juQ.png' />
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
-		<link rel="stylesheet" href="css/list.css">
+		<link rel="stylesheet" href="<?=asset('css', 'list.css')?>">
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -123,19 +124,9 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
 		<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCDRRT8it4AZpwbORhHeqoi2qrWDmQqD48"></script>
 		
-		<!-- <script src="/js/vendor-common.js"></script>
-		<script src="/js/list.js"></script> -->
+		<script src="<?=asset('js', 'vendor-common.js')?>"></script>
+		<script src="<?=asset('js', 'list.js')?>"></script>
 
-		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-common.js"></script>
-		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/list.js"></script>
-
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-			ga('create', 'UA-55384149-4', 'auto');
-			ga('send', 'pageview');
-		</script>	
+		<?=showGACode();?>
 	</body>
 </html>

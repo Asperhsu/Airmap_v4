@@ -1,3 +1,7 @@
+<?php 
+require("html/common.php"); 
+$msg = getMsg();
+?>
 <!DOCTYPE html>
 <html lang="">
 	<head>
@@ -14,23 +18,13 @@
 		<title data-lang="pageTitle">g0v零時空汙觀測網</title>
 		<link rel='shortcut icon' type='image/x-icon' href='https://i.imgur.com/Gro4juQ.png' />
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/map.css">
-		<!-- <link rel="stylesheet" href="https://rawgit.com/Aspertw/Airmap_v3/master/assets/dist/map.css"> -->
-		<style>
-			/*#msg{ display: block; }
-			#container{ 
-				height: calc(100% - 2em); 
-				top: 2em;
-			}*/
-		</style>
+		<link rel="stylesheet" href="<?=asset('css', 'map.css')?>">
 	</head>
 	<body>
-		<div id="msg">
-			中南部的你，有多久沒看見清澈的天空？
-			<a href="https://www.facebook.com/events/1867797300100452/" target="_blank">
-				219反空污找藍天大遊行
-			</a>
-		</div>
+		<?php if( !is_null($msg) ):?>
+		<style>#container{ height: calc(100% - 2em); top: 2em; }</style>
+		<div id="msg"><?=$msg;?></div>
+		<?php endif;?>
 
 		<div id="container">
 			<div id="loading" class="loading">
@@ -126,9 +120,16 @@
 									v-on:click="site_changeMeasure"
 								>{{ measure.name }}</button>
 							</div>
+						</div>
+					</li>
 
+					<li class="list-group-item" data-name="mapTool" >
+						<h4 class="list-group-item-heading" v-on:click="changeActiveItem">
+							<span data-lang="mapTool">地圖工具</span>
+						</h4>
+						<div class="list-group-item-text" v-show="showItemText('mapTool')" transition="slide">
 							<div class="blockquote">
-								<span class="title" data-lang="measureType">區域切換</span>
+								<span class="title" data-lang="districtChange">區域切換</span>
 							</div>
 							<div class="blockquote-content">
 								<button type="button" class="btn btn-default" data-area="taipei" v-on:click="areaQuickNavi">台北市</button>
@@ -325,21 +326,10 @@
 		<script src="https://www.gstatic.com/charts/loader.js"></script>
 		<script>google.charts.load('current', {'packages':['corechart']});</script>
 
-		<script src="/js/vendor-common.js"></script>
-		<script src="/js/vendor-map.js"></script>
-		<script src="/js/map.js"></script>
+		<script src="<?=asset('js', 'vendor-common.js')?>"></script>
+		<script src="<?=asset('js', 'vendor-map.js')?>"></script>
+		<script src="<?=asset('js', 'map.js')?>"></script>
 
-		<!-- <script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-common.js"></script>
-		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/vendor-map.js"></script>
-		<script src="https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/map.js"></script> -->
-
-		<script>
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-			ga('create', 'UA-55384149-4', 'auto');
-			ga('send', 'pageview');
-		</script>
+		<?=showGACode();?>
 	</body>
 </html>
