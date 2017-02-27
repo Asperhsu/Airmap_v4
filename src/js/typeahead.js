@@ -43,19 +43,17 @@ $input.typeahead({
 	autoSelect: true,
 	fitToElement: true,
 	minLength: 3,
-	displayText: function (item) {
-		var icon = item.instance ? 'glyphicon-bookmark' : 'glyphicon-map-marker';
-        return item.name + "#" + icon;
-    },
-	highlighter: function(item) {
-		var parts = item.split('#');
+	highlighter: function(displayText, item) {
+		var iconClass = "";
+		if(item.instance){ iconClass = "glyphicon-bookmark"; }
+		if(item.placeID){ iconClass = "glyphicon-map-marker"; }
 
 		var query = this.query;
 		var reEscQuery = query.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
 		var reQuery = new RegExp('(' + reEscQuery + ')', "gi");
-		var text = parts[0].replace(reQuery, '<strong>$1</strong>');
+		var text = displayText.replace(reQuery, '<strong>$1</strong>');
 
-		return '<span class="glyphicon ' + parts[1] + '"></span> ' + text;
+		return '<span class="glyphicon ' + iconClass + '"></span> ' + text;
 	},
 });
 $input.change(function() {
