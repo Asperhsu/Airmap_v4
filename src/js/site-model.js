@@ -19,9 +19,9 @@ function Site(data){
  */
 Site.prototype.isValid = function(){
 	var item = this.property;
-
+	
 	//time filter
-	if( moment().diff(moment(item.Data.Create_at), 'minutes') > 60 ){
+	if( item.Data && moment().diff(moment(item.Data.Create_at), 'minutes') > 30 ){
 		return false;
 	}
 

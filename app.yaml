@@ -30,7 +30,7 @@ handlers:
   script: script/icon/make.php
 
 #json
-- url: /json/(.+)\.json
+- url: /json/(.*)
   script: script/json.php
 
 #static html
