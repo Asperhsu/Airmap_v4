@@ -29,6 +29,10 @@ handlers:
 - url: /image/markerIcon/.*
   script: script/icon/make.php
 
+#json
+- url: /json/(.+)\.json
+  script: script/json.php
+
 #static html
 - url: /recruit
   static_files: html/recruit.html

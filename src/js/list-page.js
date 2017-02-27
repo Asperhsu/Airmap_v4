@@ -54,7 +54,7 @@ $(function(){
 
 		$("#loading").show();
 
-		var url = "https://datasource.airmap.asper.tw/{{filename}}.json?raw=1";
+		var url = "/json/{{filename}}.json?raw=1";
 		url = url.replace('{{filename}}', filename);
 
 		$.getJSON(url).then(data => {
