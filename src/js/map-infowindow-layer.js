@@ -2,7 +2,6 @@ require("css/map-infowindow.css");
 
 var LANG = require("js/lang");
 var GaugeChart = require("js/site-gauge-chart");
-var SiteReliability = require("js/site-reliability");
 var Indicator = require("js/measure-indicator");
 
 function InfoWindowLayer(){
@@ -26,20 +25,15 @@ InfoWindowLayer.prototype.setSite = function(Site){
 	$container.find(".indep-page").attr('href', indepPageLink );
 	
 	//sinica ranking
-	var deviceID = Site.getIdentity();
+	var ranking = Site.getProperty('reliableRanking');
 	var $ranking = $container.find(".ranking").html('');
-	var ranking = SiteReliability.getRankingByDeviceID(deviceID);
-	if( ranking ){
-		var html = '';
-		[1,2,3,4,5].map(level => {
-			if( level <= ranking ){
-				html += '<span class="glyphicon glyphicon-star"></span>';
-			}else{
-				html += '<span class="glyphicon glyphicon-star-empty"></span>';
-			}
-		});
-
-		$ranking.html(html);
+	if(ranking !== null){
+		var html = [];
+		var template = '<span class="glyphicon glyphicon-{{icon}}"></span>';
+		for(var i=1; i<=5; i++){
+			html.push(template.replace('{{icon}}', i<=ranking ? 'star' : 'star-empty'));
+		}
+		$ranking.html(html.join(''));
 	}
 
 	//update at
