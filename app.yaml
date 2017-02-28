@@ -31,7 +31,7 @@ handlers:
 
 #json
 - url: /json/(.*)
-  script: script/json.php
+  script: script/datasource.php
 
 #static html
 - url: /recruit

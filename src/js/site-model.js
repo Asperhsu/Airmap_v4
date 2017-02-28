@@ -128,7 +128,7 @@ Site.prototype.getPosition = function(){
  */
 
 Site.prototype.fetchLastest = function(group, id, includeRaw=false){
-	var urlTemplate = "https://datasource.airmap.asper.tw/query-lastest?group={{group}}&id={{id}}";
+	var urlTemplate = "/json/query-lastest?group={{group}}&id={{id}}";
 	if(includeRaw){ urlTemplate = urlTemplate+"&raw=1"; }
 	
 	var url = urlTemplate.replace('{{group}}', group).replace('{{id}}', id);
@@ -159,7 +159,7 @@ Site.prototype.fetchHistory = function(offsetHours){
 		return false;
 	}
 
-	var urlTemplate = "https://datasource.airmap.asper.tw/query-history?group={{group}}&id={{id}}&start={{start}}&end={{end}}";
+	var urlTemplate = "/json/query-history?group={{group}}&id={{id}}&start={{start}}&end={{end}}";
 	var url = urlTemplate.replace('{{group}}', group).replace('{{id}}', id)
 						 .replace('{{start}}', start).replace('{{end}}', end);
 

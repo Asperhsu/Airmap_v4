@@ -1,4 +1,5 @@
 <?php
+include("env.php");
 date_default_timezone_set('Asia/Taipei');
 
 $Memcache = null;
@@ -44,4 +45,23 @@ function jsonResponse($response){
 	header('Content-Type: application/json');
 	echo $response;
 	exit;
+}
+
+function fetchDatasource($url, $query=''){
+	$token = @getenv("DS_TOKEN", true) ?: getenv("DS_TOKEN");
+	$prefix = "https://datasource.airmap.asper.tw/";
+	if( !strlen($token) ){ return false; }
+
+	$resource  = $url . '?token=' . $token;
+	$resource .= strlen($query) ? '&'.$query : '';
+
+	$context = stream_context_create(
+		array(
+			'ssl' => array('verify_peer' => false),
+			'http' => array( 'method' => 'GET' )
+		)
+	);
+	
+	$response = file_get_contents($prefix . $resource, false, $context);
+	return $response;
 }
