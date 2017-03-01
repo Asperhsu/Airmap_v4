@@ -76,6 +76,22 @@
 				padding-left: 5px;
 				overflow: hidden;
 			}
+		
+		.site-icon-text {
+			font-size: 0.9em;
+		}
+		.site-icon-text .text {
+			line-height: 30px;
+			height: 30px;
+			vertical-align: top;
+		}
+		.site-icon-text .about {
+			font-size: 0.9em;
+			padding-left: 20px;
+			padding-top: 5px;
+			margin-top: 5px;
+		}
+
 
 
 		.list-group-item .slider{

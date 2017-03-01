@@ -1,5 +1,6 @@
 var Helper = require("js/helper");
 var Indicator = require("js/measure-indicator");
+var SVGTool = require("js/svg-tool");
 
 function Site(data){
 	this.property = {};
@@ -256,36 +257,22 @@ Site.prototype.updateMarkerColor = function(){
 }
 
 Site.prototype.getIconSVG = function(size){
-	var iconSvg = [
-		'<svg width="30" height="30" viewBox="-40 -40 100 80" xmlns="http://www.w3.org/2000/svg">',
-		'	<defs>',
-		'		<filter id="dropshadow" height="150%">',
-		'			<feGaussianBlur in="SourceAlpha" stdDeviation="1"/> ',
-		'			<feOffset dx="3" dy="3" result="offsetblur"/> ',
-		'			<feMerge> ',
-		'				<feMergeNode/>',
-		'				<feMergeNode in="SourceGraphic"/> ',
-		'			</feMerge>',
-		'		</filter>',
-		'	</defs>',
-		'	<circle r="{{size}}" stroke="#FFFFFF" stroke-width="3" fill="{{background}}" filter="url(#dropshadow)"/>',
-		'	<circle r="{{size}}" stroke="#FFFFFF" stroke-width="3" fill="{{background}}"/>',
-		'	<text x="0" y="13" fill="#232F3A" text-anchor="middle" style="font-size:35px; font-weight: bolder;">{{text}}</text>',
-		'</svg>'
-	].join('');
-
 	var color = '#006699';
 	var text = '';
+
 	if( typeof Indicator !== "undefined" ){
 		var measureType = Indicator.getPresentType();
 		text = this.getMeasure(measureType) ? Math.round(this.getMeasure(measureType)) : '';
 		color = this.getMeasureColor();
-	}	
+	}
 
-	var url = 'data:image/svg+xml;charset=utf-8,' + 
-			   encodeURIComponent( 
-				 iconSvg.replace('{{background}}', color).replace('{{size}}', size || 40).replace('{{text}}', text)
-			   );
+	var url = SVGTool.getCircleUrl(color, text);
+	var status = this.getProperty('supposeStatus');
+	if(status !== null){
+		if(status.indexOf('indoor') > -1){ url = SVGTool.getHomeUrl(color, text); }
+		if(status.indexOf('longterm-pollution') > -1){ url = SVGTool.getFactoryUrl(color, text); }
+		if(status.indexOf('shortterm-pollution') > -1){ url = SVGTool.getCloudUrl(color, text); }
+	}
 
 	return {
 		anchor: MapHandler.createPoint(10, 10),
