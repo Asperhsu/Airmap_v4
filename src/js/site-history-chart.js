@@ -4,7 +4,7 @@ var SiteHistoryChart = {
 	lineColors: ['#F4A460', '#FF1493', '#20B2AA', '#ADFF2F', '#B0C4DE'],
 	//https://developers.google.com/chart/interactive/docs/gallery/linechart
 	options: {
-		chartArea: { top:20, left:60, width: '80%', height: '80%' },
+		chartArea: { top:20, left:45, width: '90%', height: '80%' },
 		legend: { position: 'bottom'},
 		fontSize: 14,
 		fontName: "Verdana",
