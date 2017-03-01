@@ -53,7 +53,14 @@ var Navigator = new Vue({
 			this.activeItem = this.activeItem == name ? '' : name;
 		},
 		site_changeCategory: function(e){
-			var name = $(e.target).data('category');
+			var name = null;
+			var $target = $(e.target);
+			if( $target.is("button") ){
+				name = $target.attr('data-category');
+			}else{
+				name = $target.parents('button').attr('data-category');
+			}
+
 			this.site.category.map(function(site, i){
 				if( site.name == name ){
 					site.active = !site.active;
