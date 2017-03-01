@@ -34,11 +34,13 @@
 			<div id="navbar">
 				<div class="site-info">
 					<span class="label label-info site-group">{{group}}</span>
+					<br/>
 					<span class="site-name">{{name}}</span>
 				</div>
 				<div class="g0v-logo">
 					<img src="https://i.imgur.com/IWqy7yh.png" alt="Image" class="hidden-xs">
 					<img src="https://i.imgur.com/yCKqhc1.png" alt="Image" class="visible-xs-inline">
+					<br/>
 					<a href="/" class="btn btn-success" title="Map"><span class="glyphicon glyphicon-map-marker"></span></a>
 					<a href="/list" class="btn btn-info" title="List"><span class="glyphicon glyphicon-th-list"></span></a>
 				</div>
@@ -55,25 +57,33 @@
 				<div id="gauge">
 					<div class="body" style="background-color: #337AB7;">
 						<div class="chart-container">
-							<div>
+							<div class="col-sm-4 col-xs-12">
 								<div id="gauge-pm25" class="chart"></div>
-								<p class="bg-info text-center">PM 2.5</p>
+								<div>
+									<span class="bg-info">PM 2.5</span>
+								</div>
 							</div>
-							<div>
+							<div class="col-sm-4 col-xs-12">
 								<div id="gauge-temp" class="chart"></div>
-								<p class="bg-info text-center">Temperature</p>
+								<div>
+									<span class="bg-info">Temperature</span>
+								</div>
 							</div>
-							<div>
+							<div class="col-sm-4 col-xs-12">
 								<div id="gauge-humi" class="chart"></div>
-								<p class="bg-info text-center">Humidity</p>
+								<div>
+									<span class="bg-info">Humidity</span>
+								</div>
 							</div>
+							<div class="clearfix"></div>
 						</div>
+						<hr>
 						<div class="suggestion">
 							<div class="row normal-human">
-								<div class="col-xs-5 col-sm-3 text-right">
+								<div class="targetPeople col-xs-12 col-sm-3">
 									<span class="label label-suggestion">一般民眾活動建議</span>
 								</div>
-								<div class="col-xs-7 col-sm-9">
+								<div class="text col-xs-12 col-sm-9">
 									<div data-range-min="0" data-range-max="35" data-color="#5CB85C">正常戶外活動</div>
 									<div data-range-min="36" data-range-max="53" data-color="#F0AD4E">正常戶外活動</div>
 									<div data-range-min="54" data-range-max="70" data-color="#D9534F">任何人如果有不適，如眼痛，咳嗽或喉嚨痛等，應該考慮減少戶外活動</div>
@@ -82,10 +92,10 @@
 							</div>
 
 							<div class="row sensitive-human">
-								<div class="col-xs-5 col-sm-3 text-right">
+								<div class="targetPeople col-xs-12 col-sm-3">
 									<span class="label label-suggestion">敏感性族群活動建議</span>
 								</div>
-								<div class="col-xs-7 col-sm-9">
+								<div class="text col-xs-12 col-sm-9">
 									<div data-range-min="0" data-range-max="35" data-color="#5CB85C">正常戶外活動</div>
 									<div data-range-min="36" data-range-max="53" data-color="#F0AD4E"> 	有心臟、呼吸道及心血管疾病的成人與孩童感受到癥狀時，應考慮減少體力消耗，特別是減少戶外活動。</div>
 									<div data-range-min="54" data-range-max="70" data-color="#D9534F">
@@ -104,25 +114,21 @@
 								</div>
 							</div>
 
-							<div class="row datasource">
-								<div class="col-xs-5 col-sm-3 text-right">
-									<span class="label label-default">資料來源</span>
-								</div>
-								<div class="col-xs-7 col-sm-9">
-									<a href="http://taqm.epa.gov.tw/taqm/tw/fpmi.aspx" target="_blank">
-										行政院環保署細懸浮微粒(PM2.5)指標對照表與活動建議
-									</a>
-								</div>
+							<div class="datasource">
+								<span class="label label-default">資料來源</span>
+								<a href="http://taqm.epa.gov.tw/taqm/tw/fpmi.aspx" target="_blank">
+									行政院環保署細懸浮微粒(PM2.5)指標對照表與活動建議
+								</a>
 							</div>
 						</div>
 					</div>
-					<div class="header">
-						<div class="title">
+					<div class="header row">
+						<div class="title col-sm-6 col-xs-12">
 							<span class="glyphicon glyphicon-chevron-right"></span>
 							Lastest Gauge Value
 						</div>
 
-						<div class="create-at">
+						<div class="create-at text-right col-sm-6 col-xs-12">
 							<span class="glyphicon glyphicon-time"></span>  
 							<span class="human-timestring">
 								Updated <span class="time"></span> ago.

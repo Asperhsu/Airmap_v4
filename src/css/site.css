@@ -48,28 +48,14 @@ body {
 	#navbar .site-name { 
 		vertical-align: middle; 
 	}
+
+	#navbar .g0v-logo {
+		text-align: right;
+	}
 	#navbar .g0v-logo img { 
 		height: 3em; 
 		filter: drop-shadow(0px 0px 3px #fff) drop-shadow(0px 0px 5px #fff);
 		-webkit-filter: drop-shadow(0px 0px 3px #fff) drop-shadow(0px 0px 5px #fff);		
-	}
-
-#recruit .popover{
-	opacity: 0.9;
-	display: inline-block;
-	position: absolute;
-	left: 180px;
-	top: 0.5em;
-	z-index: 80;
-	cursor: pointer;
-}
-#recruit .popover-content{
-	padding: 3px 8px;
-}
-
-#map-container{
-	width:100%;
-	height: 100%;
 	}
 
 #content > div{ 
@@ -97,9 +83,12 @@ body {
 	}
 	
 	#gauge .body .chart-container{
-		display: flex;
-		justify-content: space-around;
+
 	}
+		#gauge .body .chart-container > div {
+			text-align: center;
+		}
+
 		#gauge .body .bg-info{
 			padding: 5px 10px;
 			border-radius: 5px;
@@ -108,8 +97,8 @@ body {
 
 		#gauge .body .chart { 
 			display: inline-block; 
-			width: 20vw; 
-			height: 20vw; 
+			width: 25vw; 
+			height: 25vw; 
 			margin: 5px 0; 
 		}
 		
@@ -139,13 +128,14 @@ body {
 		}
 
 	#gauge .header{
-		display: flex;
-		justify-content:space-between;
-		align-items: center;
 		font-size: 1em;
 	}
 		#gauge .header .title {
 			font-size: 1.3em;
+		}
+
+		#gauge .header .create-at {
+			line-height: 2em;
 		}
 
 	#locatiion .body {
@@ -193,3 +183,18 @@ body {
 
 #no-content{ display: none; }
 #error-msg{ display: none; }
+
+
+@media (max-width: 768px) {
+	#gauge .body .chart { 
+		width: 50vw; 
+		height: 50vw; 
+	}
+
+	#gauge .suggestion .targetPeople {
+		text-align: center;
+	}
+	#gauge .suggestion .text {
+		text-align: center;
+	}
+}
