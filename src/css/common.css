@@ -124,3 +124,15 @@
 		font-size: 1.2em;
 		margin-left: -5px;
 	}
+
+.block-msg{
+	text-align: center;
+	width:100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+	.block-msg .content{
+		display: inline-block;
+		text-align: left;
+	}

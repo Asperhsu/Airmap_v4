@@ -395,6 +395,26 @@ $msg = getMsg();
 
 			<div id="info-on-map" data-lang="visibleSiteCount" title="Visible site count"></div>
 		</div>
+
+		<div id="browser-no-support" class="container block-msg" style="display: none;">
+			<div class="content">
+				<h1>
+					<span class="glyphicon glyphicon-remove-sign"></span>
+					這裡不支援IE或是Edge喔~
+				</h1>
+				<h3>
+					請用Firefox或是Chrome瀏覽
+				</h3>
+				<hr>
+				<h1>
+					<span class="glyphicon glyphicon-remove-sign"></span>
+					We don't support IE or Edge. 
+				</h1>
+				<h3>
+					Try Firefox or Chrome.
+				</h3>
+			</div>
+		</div>
 	
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCDRRT8it4AZpwbORhHeqoi2qrWDmQqD48&libraries=places"></script>

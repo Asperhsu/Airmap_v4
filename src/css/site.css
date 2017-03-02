@@ -168,19 +168,6 @@ body {
 		color: black;
 	}
 
-
-.block-msg{
-	text-align: center;
-	width:100%;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-}
-	.block-msg .content{
-		display: inline-block;
-		text-align: left;
-	}
-
 #no-content{ display: none; }
 #error-msg{ display: none; }
 

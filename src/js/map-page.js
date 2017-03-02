@@ -6,31 +6,38 @@ var DataSource = require("js/datasource-loader");
 var siteTool = require("js/site-tool");
 var LANG = require("js/lang");
 
-//map boot
-var optionsLatLng = getUrlLatLng();
-var options = optionsLatLng ? {center: optionsLatLng, zoom:18} : {};
-MapHandler.boot(options);
-google.maps.event.addDomListener(window, "load", MapHandler.initMap);
+var isIE = /*@cc_on!@*/false || !!document.documentMode;
+var isEdge = !isIE && !!window.StyleMedia;
+if( isIE || isEdge ){
+	$("#browser-no-support").show();
+	$("#container").hide();
+}else{
+	//map boot
+	var optionsLatLng = getUrlLatLng();
+	var options = optionsLatLng ? {center: optionsLatLng, zoom:18} : {};
+	MapHandler.boot(options);
+	google.maps.event.addDomListener(window, "load", MapHandler.initMap);
 
-//UI boot
-LANG.boot();
-Indicator.boot();
+	//UI boot
+	LANG.boot();
+	Indicator.boot();
 
-$("#loading").show().find(".msg").text('Loading Google Map');
+	$("#loading").show().find(".msg").text('Loading Google Map');
 
-$("body")
-	.on('mapBootCompelete', function(){
-		DataSource.boot();
-		siteTool.boot();
-		require("js/map-infowindow-layer");
-		require("js/typeahead");
+	$("body")
+		.on('mapBootCompelete', function(){
+			DataSource.boot();
+			siteTool.boot();
+			require("js/map-infowindow-layer");
+			require("js/typeahead");
 
-		$("#loading .msg").text('Loading sites')
-	})
-	.on("dataSourceLoadCompelete", function(e, data){
-		siteTool.loadSites(data);
-		$("#loading").hide();
-	});
+			$("#loading .msg").text('Loading sites')
+		})
+		.on("dataSourceLoadCompelete", function(e, data){
+			siteTool.loadSites(data);
+			$("#loading").hide();
+		});
+}
 
 //parse location from hash
 function getUrlLatLng(){
