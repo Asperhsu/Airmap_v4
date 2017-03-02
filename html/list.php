@@ -84,13 +84,15 @@
 				<thead>
 					<tr>
 						<th data-formatter="bsTable.formatter.sn">#</th>
-						<th data-field="SiteName" data-sortable="true" data-searchable="true" data-formatter="bsTable.formatter.siteName">Name</th>
-						<th data-field="Maker" data-sortable="true" data-searchable="true">Maker</th>
-						<th data-field="LatLng" data-formatter="bsTable.formatter.location">Location</th>
-						<th data-field="Data.Dust2_5" data-sortable="true">PM 2.5</th>
-						<th data-field="Data.Temperature" data-sortable="true">Temp</th>
-						<th data-field="Data.Humidity" data-sortable="true">RH</th>
-						<th data-field="Data.Create_at" data-sortable="true" data-formatter="bsTable.formatter.updateTime">Update Time</th>
+						<th data-field="SiteName" data-class="SiteName" data-sortable="true" data-searchable="true" data-formatter="bsTable.formatter.siteName">Name</th>
+						<th data-field="Maker" data-class="Maker" data-sortable="true" data-searchable="true">Maker</th>
+						<th data-field="Data.Dust2_5" data-class="Dust2_5" data-sortable="true">PM 2.5</th>
+						<th data-field="Data.Temperature" data-class="Temperature" data-sortable="true">Temp</th>
+						<th data-field="Data.Humidity" data-class="Humidity" data-sortable="true">RH</th>
+						<th data-field="LatLng" data-class="LatLng" data-formatter="bsTable.formatter.location">Location</th>
+						<th data-field="reliableRanking" data-class="ranking" data-sortable="true" data-formatter="bsTable.formatter.ranking">Ranking</th>
+						<th data-field="supposeStatus" data-class="supposeStatus" data-sortable="true" data-formatter="bsTable.formatter.status">Analysis</th>
+						<th data-field="Data.Create_at" data-class="Create_at" data-sortable="true" data-formatter="bsTable.formatter.updateTime">Updated At</th>
 					</tr>
 				</thead>
 			</table>

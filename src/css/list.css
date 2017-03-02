@@ -33,7 +33,11 @@ html, body{ padding: 10px; }
 .bsTable > tbody > tr:not(.detail-view) > td:first-of-type { display: none; }
 .bsTable > thead > tr > th:nth-child(2),
 .bsTable > tbody > tr:not(.detail-view) > td:nth-child(2) { border-left: none !important; }
-.bsTable > tbody > tr > td:nth-child(3) { text-align: left; }
+
+.bsTable > tbody .SiteName { text-align: left; }
+.bsTable > tbody .ranking { color: #FFC436; }
+.bsTable > tbody .supposeStatus { padding: 4px 0 0 0 !important; }
+.bsTable > tbody .Create_at { text-align: left; }
 
 .detail-view .table thead th { padding: 8px !important; }
 .detail-view .table tbody th { text-align: right; }
