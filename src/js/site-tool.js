@@ -97,6 +97,16 @@ var siteTool = (function(){
 			}
 			return showLayer;
 		},
+		filterStatus: function(stat, flag){
+			for(var i in sites){
+				var site = sites[i];
+				var status = site.getProperty('supposeStatus');
+				
+				if( (stat == 'normal' && status === null) || ( status !== null && status.indexOf(stat) > -1) ){ 
+					site.toggleMarker(flag);
+				}
+			}
+		},
 		getVoronoiData: function(){
 			var locations = [];
 			var colors = [];
@@ -141,6 +151,10 @@ $("body").on("site_changeCategory", function(e, actives){
 $("body").on("toggleLayer", function(e, type, state){
 	if( type != 'siteLayer'){ return; }
 	siteTool.toggleLayer(state);
+});
+
+$("body").on("filterStatus", function(e, status, state){
+	siteTool.filterStatus(status, state);
 });
 
 module.exports = siteTool;

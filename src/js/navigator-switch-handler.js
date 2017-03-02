@@ -42,8 +42,25 @@ $("#languageSwitch").on('switchChange.bootstrapSwitch', function(event, state) {
 	});
 })();
 
+//analysis toggle
+(function(){
+	var layerToggleOptions = {
+		state: false,
+		size: 'mini',
+		handleWidth: "15",
+		onSwitchChange: function(e, state){
+			var name = $(e.target).data('status');
+			$("body").trigger("filterStatus", [name, state]);
+		}
+	};
+	Object.keys(layerToggleOptions).map(function(key, index) {
+		$(".bs-switch.statusToggle").bootstrapSwitch(key, layerToggleOptions[key]);
+	});
+})();
+
 //prevent browser cache
 $(".layerToggle.siteLayer").bootstrapSwitch('state', true);
+$(".bs-switch.statusToggle").bootstrapSwitch('state', true);
 
 
 // siteLayer voronoi

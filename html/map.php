@@ -130,6 +130,7 @@ $msg = getMsg();
 										<circle r="40" stroke="#FFFFFF" stroke-width="3" fill="#333333" />
 									</svg>
 									<span class="text">一般站點 (無分析資料)</span>
+									<input type="checkbox" class="pull-right bs-switch statusToggle" data-status="normal">
 								</div>
 								<div>
 									<svg width="30" height="30" viewBox="0 0 391.62 371.62" xmlns="http://www.w3.org/2000/svg">
@@ -139,6 +140,7 @@ $msg = getMsg();
 										C35.757,310.921,0,275.164,0,231.056C0,192.907,26.749,161.011,62.513,153.087z"/>
 									</svg>
 									<span class="text">偵測到小型污染源</span>
+									<input type="checkbox" class="pull-right bs-switch statusToggle" data-status="shortterm-pollution">
 								</div>
 								<div>
 									<svg width="30" height="30" viewBox="0 0 45.414 39.414" xmlns="http://www.w3.org/2000/svg">
@@ -149,6 +151,7 @@ $msg = getMsg();
 										C39.695,17.249,39.41,16.017,38.475,15.432z"/>
 									</svg>
 									<span class="text">可能放置於室內或設備故障</span>
+									<input type="checkbox" class="pull-right bs-switch statusToggle" data-status="indoor">
 								</div>
 								<div>
 									<svg width="30" height="30" viewBox="-10 -10 325.756 345.756" xmlns="http://www.w3.org/2000/svg">
@@ -183,6 +186,7 @@ $msg = getMsg();
 										</g>
 									</svg>
 									<span class="text">可能接近長時間的固定污染源或設備故障</span>
+									<input type="checkbox" class="pull-right bs-switch statusToggle" data-status="longterm-pollution">
 								</div>
 								
 								<ul class="about">
