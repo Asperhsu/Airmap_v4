@@ -259,7 +259,8 @@ Site.prototype.getIconSVG = function(){
 
 	if( typeof Indicator !== "undefined" ){
 		var measureType = Indicator.getPresentType();
-		text = this.getMeasure(measureType) ? Math.round(this.getMeasure(measureType)) : '';
+		var measureValue = this.getMeasure(measureType);
+		text = measureValue === null ? '' : Math.round(measureValue);
 		color = this.getMeasureColor();
 	}
 
@@ -283,7 +284,8 @@ Site.prototype.getIconImage = function(){
 	var text = '';
 	if( typeof Indicator !== "undefined" ){
 		var measureType = Indicator.getPresentType();
-		text = this.getMeasure(measureType) ? Math.round(this.getMeasure(measureType)) : '';
+		var measureValue = this.getMeasure(measureType);
+		text = measureValue === null ? '' : Math.round(measureValue);
 		color = this.getMeasureColor();
 		if(color == "transparent"){ color = ''; }
 	}
