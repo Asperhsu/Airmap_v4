@@ -14,13 +14,13 @@ handlers:
 #css
 - url: /css/(.*)
   static_files: assets/dist/\1
-  upload: assets/dist/\1
+  upload: assets/dist/(.*)
   mime_type: text/css
 
 #js
 - url: /js/(.*)
   static_files: assets/dist/\1
-  upload: assets/dist/\1
+  upload: assets/dist/(.*)
   mime_type: application/javascript
 
 #scripts
