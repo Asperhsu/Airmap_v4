@@ -1,5 +1,4 @@
 var Cookies = require("js.cookie");
-var userLang = Cookies.get('language') || navigator.language || navigator.userLanguage;
 
 var LANG = {
 	translation: {
@@ -94,6 +93,8 @@ var LANG = {
 	},
 	currentLang: null,
 	boot: function(){
+		var userLang = Cookies.get('language') || navigator.language || navigator.userLanguage;
+
 		if( Object.keys(this.translation).indexOf(userLang) > -1 ){
 			this.currentLang = userLang;
 		}else{

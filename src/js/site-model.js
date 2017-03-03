@@ -1,17 +1,12 @@
-var Helper = require("js/helper");
-var Indicator = require("js/measure-indicator");
-var SVGTool = require("js/svg-tool");
+var Helper 		= require("js/helper");
+var Indicator 	= require("js/measure-indicator");
+var SVGTool 	= require("js/svg-tool");
 
 function Site(data){
 	this.property = {};
 	this.marker = null;
 
 	this.setProperties(data);
-
-	//events	
-	$("body").on("indicatorTypeChange", function(e, type){
-		this.updateMarkerColor();
-	}.bind(this));
 }
 
 /**
@@ -209,20 +204,19 @@ Site.prototype.createMarker = function(options){
 	options = options || {};	
 	var position = this.getPosition();
 	if( !position ){
-		console.log("position not avaliable");
+		console.log(this.getProperty('SiteName') + " position not avaliable");
 		return false;
 	}
 
 	var option = {
 		'title': this.getTitle(),
 		'position': position,
-		'map': options.onMap ? MapHandler.getInstance() : null,
+		'map': MapHandler.getInstance(),
 	};
 	delete options.onMap;
 
 	//get icon
-	var icon = this.getIconSVG();
-	// var icon = this.getIconImage();
+	var icon = this.getIcon();
 	if(icon){ option['icon'] = icon; }
 
 	this.marker = MapHandler.createMarker( $.extend({}, option, options) );
@@ -245,18 +239,21 @@ Site.prototype.toggleMarker = function(flag){
 		flag = !!flag;
 	}
 	var map = MapHandler.getInstance();
-	this.marker.setMap( flag ? map : null );
+	this.marker.setVisible(flag);
 }
 
 Site.prototype.updateMarkerColor = function(){
 	var marker = this.getMarker();
 	if( marker ){
-		marker.setIcon(this.getIconSVG());
-		// marker.setIcon(this.getIconImage());
+		marker.setIcon(this.getIcon());
 	}
 }
 
-Site.prototype.getIconSVG = function(size){
+Site.prototype.getIcon = function(){
+	return this.getIconSVG();
+}
+
+Site.prototype.getIconSVG = function(){
 	var color = '#006699';
 	var text = '';
 

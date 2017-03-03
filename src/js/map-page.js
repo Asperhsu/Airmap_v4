@@ -25,13 +25,14 @@ if( isIE || isEdge ){
 	$("#loading").show().find(".msg").text('Loading Google Map');
 
 	$("body")
+		.on('dataSourceLoadSources', function(){
+			$("#loading").show().find(".msg").text('Loading sites');
+		})
 		.on('mapBootCompelete', function(){
 			DataSource.boot();
 			siteTool.boot();
 			require("js/map-infowindow-layer");
 			require("js/typeahead");
-
-			$("#loading .msg").text('Loading sites')
 		})
 		.on("dataSourceLoadCompelete", function(e, data){
 			siteTool.loadSites(data);

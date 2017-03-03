@@ -1,7 +1,7 @@
 var DataSource = {
 	autoUpdateFlag: true,
 	autoUpdateTS: null,
-	autoUpdateIntervalms: 5 * 60 * 1000,
+	autoUpdateIntervalms: 1 * 60 * 1000,
 	sources: [
 		"/json/airmap.json"
 	],
@@ -10,6 +10,8 @@ var DataSource = {
 		this.autoUpdate(true);
 	},
 	loadSources: function(){
+		$("body").trigger("dataSourceLoadSources");
+
 		if( !this.sources.length ){
 			$("body").trigger("dataSourceLoadCompelete");
 			return;

@@ -49,8 +49,14 @@ $("#languageSwitch").on('switchChange.bootstrapSwitch', function(event, state) {
 		size: 'mini',
 		handleWidth: "15",
 		onSwitchChange: function(e, state){
-			var name = $(e.target).data('status');
-			$("body").trigger("filterStatus", [name, state]);
+			var actives = [];
+			$(".bs-switch.statusToggle").each(function(){
+				var status = $(this).data('status');
+				var state = $(this).bootstrapSwitch('state');
+				if(state){ actives.push(status); }
+			});
+
+			$("body").trigger("filterStatus", [actives]);
 		}
 	};
 	Object.keys(layerToggleOptions).map(function(key, index) {

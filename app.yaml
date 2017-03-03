@@ -12,15 +12,15 @@ handlers:
   upload: assets/image/(.*\.(bmp|gif|ico|jpeg|jpg|png))
 
 #css
-- url: /css/(.*\.css)
+- url: /css/(.*)
   static_files: assets/dist/\1
-  upload: assets/dist/(.*\.css)
+  upload: assets/dist/\1
   mime_type: text/css
 
 #js
-- url: /js/(.*\.js)
+- url: /js/(.*)
   static_files: assets/dist/\1
-  upload: assets/dist/(.*\.js)
+  upload: assets/dist/\1
   mime_type: application/javascript
 
 #scripts
