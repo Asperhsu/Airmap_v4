@@ -1,7 +1,7 @@
 var DataSource = {
 	autoUpdateFlag: true,
 	autoUpdateTS: null,
-	autoUpdateIntervalms: 1 * 60 * 1000,
+	autoUpdateIntervalms: 5 * 60 * 1000,
 	sources: [
 		"/json/airmap.json"
 	],
