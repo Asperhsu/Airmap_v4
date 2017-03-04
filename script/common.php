@@ -1,5 +1,5 @@
 <?php
-include("env.php");
+include(__DIR__ . "/../env.php");
 date_default_timezone_set('Asia/Taipei');
 
 $Memcache = null;

@@ -1,4 +1,4 @@
-<?php require("html/common.php"); ?>
+<?php require(__DIR__ . "/common.php"); ?>
 <!DOCTYPE html>
 <html lang="">
 	<head>

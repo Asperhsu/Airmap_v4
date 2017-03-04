@@ -2,7 +2,8 @@ var Site = require("js/site-model");
 
 var showSitesInMap = true;
 var sites = [];
-var groups = {};
+var groupCount = {};
+var analysisCount = {};
 
 var activeGroups = null;
 var activeStatus = null;
@@ -22,21 +23,52 @@ function clearSites(){
 }
 exports.clear = clearSites;
 
+function setGroupCount(Site){
+	if(!Site){ return false; }
+
+	var siteGroup = Site.getProperty('SiteGroup');
+	if( !siteGroup.length ){ return false; }
+
+	if(!groupCount[siteGroup]){ groupCount[siteGroup] = 0;	}
+	groupCount[siteGroup]++;
+}
 function getGroups(){
-	if( Object.keys(groups).length ){
-		return groups;
+	if( Object.keys(groupCount).length ){
+		return groupCount;
 	}
 
 	for(var i in sites){
 		var site = sites[i];
-		var siteGroup = site.getProperty('SiteGroup');
-
-		if( siteGroup.length ){
-			if(!groups[siteGroup]){ groups[siteGroup] = 0;	}
-			groups[siteGroup]++;
-		}
+		setGroupCount(site);
 	}
-	return groups;
+	return groupCount;
+}
+exports.getGroups = getGroups;
+
+function setAnalysisCount(Site){
+	if(!Site){ return false; }
+
+	var status = Site.getProperty('supposeStatus');
+	
+	if(status === null){ status = 'normal'; }
+	if(status.indexOf('indoor') > -1){ status = 'indoor'; }
+	if(status.indexOf('shortterm') > -1){ status = 'shortterm'; }
+	if(status.indexOf('longterm') > -1){ status = 'longterm'; }
+
+
+	if(!analysisCount[status]){ analysisCount[status] = 0;	}
+	analysisCount[status]++;
+}
+function getAnalysisCount(){
+	if( Object.keys(analysisCount).length ){
+		return analysisCount;
+	}
+
+	for(var i in sites){
+		var site = sites[i];
+		setAnalysisCount(site);
+	}
+	return analysisCount;
 }
 exports.getGroups = getGroups;
 
@@ -89,10 +121,12 @@ function loadSites(data){
 		if( !site.isValid() ){ continue; }
 
 		site.createMarker({onMap: false});
+		setGroupCount(site);
+		setAnalysisCount(site);
 		addSite(site);
 	}
 	
-	$("body").trigger("sitesLoaded", [getGroups()]);
+	$("body").trigger("sitesLoaded", [getGroups(), getAnalysisCount()]);
 	countSitesInView();
 }
 exports.loadSites = loadSites;

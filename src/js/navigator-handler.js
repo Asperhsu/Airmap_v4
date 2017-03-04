@@ -26,12 +26,7 @@ var Navigator = new Vue({
 			chartLoadingError: false,
 			instance: null,
 		},
-		wind: {
-			loading: false, 
-			lineOpacity: 6,
-			movingSpeed: 1,
-			dateUpdateTime: '',
-		},
+		analysis: {},
 		emission_opacity: 10,
 		satellite_opacity: 5,
 	},
@@ -128,12 +123,6 @@ var Navigator = new Vue({
 			map.setZoom( areaInfo[area].zoom );
 		}
 	},
-	computed: {
-		wind_movingSpeedText: function(){
-			if( this.wind.movingSpeed == 1 ){ return '1x'; }
-			return '1/' + this.wind.movingSpeed + 'x';
-		}
-	},
 	watch: {
 		'open': function(newValue){
 			var left = newValue ? 0 : -1 * $(this.$el).width();
@@ -141,12 +130,6 @@ var Navigator = new Vue({
 		},
 		'site.voronoiLayerOpacity': function(newValue){
 			$("#siteVoronoi").find("svg").css("opacity", newValue/10);
-		},
-		'wind.lineOpacity': function(newValue){
-			$("body").trigger("wind_lineOpacity", newValue/10);
-		},
-		'wind.movingSpeed': function(newValue){
-			$("body").trigger("wind_movingSpeed", newValue);
 		},
 		'emission_opacity': function(newValue){
 			$("#emissionVoronoi").css('opacity', newValue/10);
@@ -175,7 +158,7 @@ $body.on('openNavigator', function(e, activeItem){
 });
 
 //load site group
-$body.on("sitesLoaded", function(e, groups){
+$body.on("sitesLoaded", function(e, groups, analysisCount){
 	var category = Navigator.site.category;
 	var existsNames = Navigator.site.category.map(function(cat){ return cat.name; });
 	
@@ -198,6 +181,9 @@ $body.on("sitesLoaded", function(e, groups){
 		category[i].active && activeGroups.push(category[i].name);
 	}
 	$("body").trigger("site_changeCategory", [activeGroups]);
+
+
+	Navigator.analysis = analysisCount;
 });
 
 //load measure type
@@ -215,25 +201,6 @@ $body.click(function(e){
 	if( !isChildrenOfNavigator && Navigator.open ){
 		Navigator.open = false;
 	}
-});
-
-//wind layer
-$body.on("wind_lineOpacity", function(e, value){
-	value = value*10;
-	if( value == Navigator.wind.lineOpacity){ return; }
-	Navigator.wind.lineOpacity = value;
-	$(".wind-lineOpacity").slider().slider('setValue', value);
-});
-$body.on("wind_movingSpeed", function(e, value){
-	if( value == Navigator.wind.movingSpeed){ return; }
-	Navigator.wind.movingSpeed = value;
-	$(".wind-movingSpeed").slider().slider('setValue', value);
-});
-$body.on("wind_loading", function(e, state){
-	Navigator.wind.loading = !!state; 
-});
-$body.on("wind_changeUpdateString", function(e, text){
-	Navigator.wind.dateUpdateTime = text;
 });
 
 //info window
