@@ -129,7 +129,10 @@ $msg = getMsg();
 									<svg width="30" height="30" viewBox="-40 -40 100 80" xmlns="http://www.w3.org/2000/svg">
 										<circle r="40" stroke="#FFFFFF" stroke-width="3" fill="#333333" />
 									</svg>
-									<span class="text">一般站點 (無分析資料) <span class="badge">{{ analysis.normal }}</span></span>
+									<div class="text">
+										<span class="">一般站點 (無分析資料)</span> 
+										<span class="badge">{{ analysis.normal }}</span>
+									</div>
 									<input type="checkbox" class="pull-right bs-switch statusToggle" data-status="normal">
 								</div>
 								<div>
@@ -139,7 +142,10 @@ $msg = getMsg();
 										c0,1.339-0.06,2.664-0.148,3.981c24.325,9.03,41.661,32.444,41.661,59.911c0,35.286-28.605,63.892-63.892,63.892H79.865
 										C35.757,310.921,0,275.164,0,231.056C0,192.907,26.749,161.011,62.513,153.087z"/>
 									</svg>
-									<span class="text">偵測到小型污染源 <span class="badge">{{ analysis.shortterm }}</span></span>
+									<div class="text">
+										<span class="">偵測到小型污染源 </span>
+										<span class="badge">{{ analysis.shortterm }}</span>
+									</div>
 									<input type="checkbox" class="pull-right bs-switch statusToggle" data-status="shortterm-pollution">
 								</div>
 								<div>
@@ -150,7 +156,10 @@ $msg = getMsg();
 										L19.707,8.428l16.646,10.396c0.33,0.206,0.695,0.304,1.059,0.304c0.667,0,1.318-0.333,1.697-0.941
 										C39.695,17.249,39.41,16.017,38.475,15.432z"/>
 									</svg>
-									<span class="text">可能放置於室內或設備故障 <span class="badge">{{ analysis.indoor }}</span></span>
+									<div class="text">
+										<span>可能放置於室內或設備故障</span> 
+										<span class="badge">{{ analysis.indoor }}</span>
+									</div>
 									<input type="checkbox" class="pull-right bs-switch statusToggle" data-status="indoor">
 								</div>
 								<div>
@@ -168,7 +177,11 @@ $msg = getMsg();
 											c-2.603-0.576-4.992-1.173-7.061-1.771c-0.811-0.235-1.493-0.469-2.24-0.683c-0.981-0.299-1.813-0.597-2.645-0.896
 											c13.803-4.864,46.037-10.624,95.381-10.624s81.536,5.76,95.339,10.624C345.216,32.256,344.384,32.555,343.403,32.853z"/>
 									</svg>
-									<span class="text">可能接近長時間的固定污染源或設備故障 <span class="badge">{{ analysis.longterm }}</span></span>
+									<div class="text">
+										<span class="">可能接近長時間的固定污染源或設備故障</span>
+										<span class="badge">{{ analysis.longterm }}</span>
+									</div>
+									
 									<input type="checkbox" class="pull-right bs-switch statusToggle" data-status="longterm-pollution">
 								</div>
 								

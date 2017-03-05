@@ -81,8 +81,8 @@
 			font-size: 0.9em;
 		}
 		.site-icon-text .text {
+			display: inline-block;
 			line-height: 30px;
-			height: 30px;
 			vertical-align: top;
 		}
 		.site-icon-text .about {
