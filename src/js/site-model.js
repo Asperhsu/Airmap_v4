@@ -17,9 +17,9 @@ Site.prototype.isValid = function(){
 	var item = this.property;
 	
 	//time filter
-	if( item.Data && moment().diff(moment(item.Data.Create_at), 'minutes') > 30 ){
-		return false;
-	}
+	// if( item.Data && moment().diff(moment(item.Data.Create_at), 'minutes') > 30 ){
+	// 	return false;
+	// }
 
 	//location filter
 	if( !item.LatLng || !item.LatLng.lng || !item.LatLng.lat ){
