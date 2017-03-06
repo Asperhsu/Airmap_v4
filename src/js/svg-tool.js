@@ -3,15 +3,15 @@ var svgTemplate = '\
 		{{path}}\
 		<text x="{{textOffsetX}}" y="{{textOffsetY}}"\
 			fill="{{textColor}}" text-anchor="middle" \
-			style="font-size:{{textSize}}px; font-weight: bolder; text-shadow: 1px 1px 0px #333, -1px -1px 0px #333, 1px -1px 0px #333, -1px 1px 0px #333;">\
+			style="font-size:{{textSize}}px; font-weight: 800; ">\
 			{{text}}\
 		</text>\
 	</svg>';
 
 var defaultProperty = {
-	width: 30,
-	height: 30,
-	viewBox: '0 0 30 30',
+	width: 35,
+	height: 35,
+	viewBox: '0 0 40 40',
 	path: '',
 	text: {
 		offset: {
@@ -45,24 +45,36 @@ var toDataImage = function(svgHtml){
 	return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svgHtml);
 }
 
+var getContrastYIQ = function(hexcolor){
+	//source: https://24ways.org/2010/calculating-color-contrast/
+	hexcolor = hexcolor.replace('#', '');
+	var r = parseInt(hexcolor.substr(0,2),16);
+	var g = parseInt(hexcolor.substr(2,2),16);
+	var b = parseInt(hexcolor.substr(4,2),16);
+	var yiq = ((r*299)+(g*587)+(b*114))/1000;
+	return (yiq >= 128) ? '#000000' : '#FFFFFF';
+}
+
 exports.getCircleUrl = function(color, text, size=40){
 	var strokeWidth = 2;
 	var strokeColor = defaultProperty.strokeColor;
 	var fillColor = color;
 
 	var path = '\
-		<circle r="40" stroke="{{strokeColor}}" stroke-width="{{strokeWidth}}" fill="{{fillColor}}" />\
+		<circle r="{{size}}" stroke="{{strokeColor}}" stroke-width="{{strokeWidth}}" fill="{{fillColor}}" />\
 	';
-	path = path.replace(/{{strokeWidth}}/g, strokeWidth)
+	path = path.replace(/{{size}}/g, size)
+				.replace(/{{strokeWidth}}/g, strokeWidth)
 				.replace(/{{strokeColor}}/g, strokeColor)
 				.replace(/{{fillColor}}/g, fillColor);
 
 	var property = {
-		viewBox: "-45 -45 90 90",
+		viewBox: "-55 -55 110 110",
 		path: path,
 		text: {
 			offset: { x: 0, y: 13 },
 			value: text,
+			color: getContrastYIQ(color),
 		}
 	};
 
@@ -99,6 +111,7 @@ exports.getHomeUrl = function(color, text){
 			},
 			size: 14,
 			value: text,
+			color: getContrastYIQ(color),
 		}
 	};
 
@@ -108,7 +121,7 @@ exports.getHomeUrl = function(color, text){
 
 exports.getCloudUrl = function(color, text){
 	//copyright: <a href="http://www.freepik.com" title="Freepik">Freepik</a>
-	var strokeWidth = 15;
+	var strokeWidth = 10;
 	var strokeColor = defaultProperty.strokeColor;
 	var fillColor = color;
 
@@ -129,11 +142,12 @@ exports.getCloudUrl = function(color, text){
 		path: path,
 		text: {
 			offset: {
-				x: 190,
-				y: 290,
+				x: 180,
+				y: 280,
 			},
 			size: 140,
 			value: text,
+			color: getContrastYIQ(color),
 		}
 	};
 
@@ -143,7 +157,7 @@ exports.getCloudUrl = function(color, text){
 
 exports.getFactoryUrl = function(color, text){
 	//copyright: <a href="http://www.freepik.com" title="Freepik">Freepik</a>
-	var strokeWidth = 10;
+	var strokeWidth = 13;
 	var strokeColor = defaultProperty.strokeColor;
 	var fillColor = color;
 
@@ -167,15 +181,16 @@ exports.getFactoryUrl = function(color, text){
 				.replace(/{{fillColor}}/g, fillColor);
 
 	var property = {
-		viewBox: "-94 -94 680 680",
+		viewBox: "-44 -44 600 600",
 		path: path,
 		text: {
 			offset: {
-				x: 256,
+				x: 250,
 				y: 480,
 			},
-			size: 200,
+			size: 230,
 			value: text,
+			color: getContrastYIQ(color),
 		}
 	};
 
