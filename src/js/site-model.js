@@ -273,7 +273,7 @@ Site.prototype.getIconSVG = function(){
 	}
 
 	return {
-		anchor: MapHandler.createPoint(10, 10),
+		anchor: MapHandler.createPoint(15, 15),
 		url: url,
 		value: text,
 	};
