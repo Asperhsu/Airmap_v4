@@ -188,7 +188,7 @@ exports.getFactoryUrl = function(color, text){
 				x: 250,
 				y: 480,
 			},
-			size: 230,
+			size: 200,
 			value: text,
 			color: getContrastYIQ(color),
 		}
