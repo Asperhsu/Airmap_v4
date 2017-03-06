@@ -1,10 +1,10 @@
 cron:
-- description: update site data every 5 min
-  url: /script/cron/fetchAirmapJson.php
-  schedule: every 5 mins
-  timezone: Asia/Taipei
+# - description: update site data every 5 min
+#   url: /script/cron/fetchAirmapJson.php
+#   schedule: every 5 mins
+#   timezone: Asia/Taipei
 
-- description: flush memeorycache data every 30 mins
+- description: flush memeorycache data every 5 mins
   url: /script/cron/flushmemcache.php
-  schedule: every 30 mins
+  schedule: every 5 mins from 00:03 to 23:59
   timezone: Asia/Taipei

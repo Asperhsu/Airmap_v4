@@ -22,7 +22,7 @@ if( strpos($urlInfo['path'], ".json") ){
 		$query = isset($urlInfo['query']) ? $urlInfo['query'] : '';
 		$response = fetchDatasource($url, $query);
 	}
-	memcacheSet($jsonType, $response, 300);
+	memcacheSet($jsonType, $response);
 }
 
 

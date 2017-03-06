@@ -87,7 +87,8 @@ Site.prototype.getMeasure = function(measureType){
 		measureType = 'Dust2_5';
 	}
 
-	return this.getProperty('Data.'+measureType);
+	var measureValue = this.getProperty('Data.'+measureType);
+	return (measureValue === null || isNaN(measureValue)) ? null : Math.round(measureValue);
 };
 
 Site.prototype.getIdentity = function(){
@@ -259,8 +260,7 @@ Site.prototype.getIconSVG = function(){
 
 	if( typeof Indicator !== "undefined" ){
 		var measureType = Indicator.getPresentType();
-		var measureValue = this.getMeasure(measureType);
-		text = measureValue === null ? '' : Math.round(measureValue);
+		text = this.getMeasure(measureType) || '';
 		color = this.getMeasureColor();
 	}
 

@@ -32,7 +32,7 @@ function memcacheSet($name, $data, $expireSecs=300){
 	return $memcache->set($memcacheKeyPrefix.$name, $data, $expireSecs);
 }
 
-function setExpire($secs = 1800){		
+function setExpire($secs = 300){
 	header("Cache-Control: max-age={$secs}, must-revalidate"); 		
 	header("Expires: " . gmdate("D, d M Y H:i:s", time() + $secs) . " GMT");
 }

@@ -76,7 +76,7 @@ var GaugeChart = {
 	},
 	getData: function(config){
 		var value = config.site.getMeasure(config.measureType);
-		return isNaN(value) ? false : +value;
+		return value || false;
 	},
 	getSizeSetting: function(config){
 		if(typeof this.options[config.size] !== "undefined"){
