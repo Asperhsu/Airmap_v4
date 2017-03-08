@@ -2,9 +2,9 @@ var DataSource = {
 	autoUpdateFlag: true,
 	autoUpdateTS: null,
 	autoUpdateIntervalms: 5 * 60 * 1000,
-	autoUpdateTimes: 6,
 	sources: [
-		"/json/airmapfeeds.json"
+		// "/json/airmapfeeds.json"
+		"https://api.myjson.com/bins/zbuz5",
 	],
 	boot: function(){
 		this.loadSources();
@@ -42,12 +42,6 @@ var DataSource = {
 		if( this.autoUpdateFlag ){
 			this.autoUpdateTS = setInterval(() => {
 				this.loadSources();
-				this.autoUpdateTimes--;
-
-				if(this.autoUpdateTimes == 0){
-					clearInterval(this.autoUpdateTS);
-					$("body").trigger("dataSourceReachAuotUpdateTimes");
-				}
 			}, this.autoUpdateIntervalms)
 		}else{
 			clearInterval(this.autoUpdateTS);
