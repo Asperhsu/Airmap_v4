@@ -16,13 +16,17 @@ if( strpos($urlInfo['path'], ".json") ){
 		exit;
 	}
 
+	if( $jsonType == "airmapfeeds" ){
+		$jsonType = "airmap"; //alias
+	}
+
 	$response = memcacheGet($jsonType);
 	if( $response === false ){
 		$url = $jsonType . ".json";
 		$query = isset($urlInfo['query']) ? $urlInfo['query'] : '';
 		$response = fetchDatasource($url, $query);
+		memcacheSet($jsonType, $response);
 	}
-	memcacheSet($jsonType, $response);
 }
 
 

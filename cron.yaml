@@ -4,7 +4,7 @@ cron:
 #   schedule: every 5 mins
 #   timezone: Asia/Taipei
 
-- description: flush memeorycache data every 5 mins
-  url: /script/cron/flushmemcache.php
-  schedule: every 5 mins from 00:03 to 23:59
-  timezone: Asia/Taipei
+# - description: flush memeorycache data every 5 mins
+#   url: /script/cron/flushmemcache.php
+#   schedule: every 5 mins from 00:03 to 23:59
+#   timezone: Asia/Taipei

@@ -2,12 +2,9 @@
 include(__DIR__ . "/../env.php");
 date_default_timezone_set('Asia/Taipei');
 
-$Memcache = null;
 $memcacheKeyPrefix = 'nGVA2HhYph5i1b8Byx8642Gw4s3ug1li';
 
-function getMemcacheInstance(){
-	global $Memcache;
-
+function getMemCacheInstance(){
 	$Memcache = new Memcached;
 
 	if( php_sapi_name() == "cli" || 

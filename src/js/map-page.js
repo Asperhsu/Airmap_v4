@@ -38,6 +38,10 @@ if( isIE || isEdge ){
 			siteTool.loadSites(data);
 			$("#loading").hide();
 		});
+
+	$("body").on("dataSourceReachAuotUpdateTimes", function(){
+		$("#loading").show().find(".msg").text('Idle time reached, already stop auto reload. If need update data, please refresh page.');
+	});
 }
 
 //parse location from hash
