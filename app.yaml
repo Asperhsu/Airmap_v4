@@ -31,8 +31,8 @@ handlers:
 
 #json
 - url: /json/airmap.json
-  static_files: html/404.html
-  upload: html/404.html
+  static_files: airmap.json
+  upload: airmap.json
   
 - url: /json/(.*)
   script: script/datasource.php
