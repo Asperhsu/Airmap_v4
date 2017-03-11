@@ -98,6 +98,29 @@ var MapHandler = (function(){
 					zoom = findZoomLevelByAccuracy(data.accuracy);
 					if( zoom > 14 ){ zoom = 14; }
 
+					var marker = new googleApi.Marker({
+						position: latlng,
+						map: map,
+						icon: {
+							path: google.maps.SymbolPath.CIRCLE,
+							fillColor: "#4285F4",
+							fillOpacity: 1,
+							scale: 8,
+							strokeColor: "#FFFFFF",
+							strokeWeight: 1,
+						}
+					});
+
+					var circle = new googleApi.Circle({
+						center: latlng,
+						radius: data.accuracy,
+						map: map,
+						fillColor: "#4285F4",
+						fillOpacity: 0.1,
+						strokeColor: "#4285F4",
+						strokeOpacity: 0.2
+					});
+
 					map.setCenter(latlng);
 					map.setZoom(zoom);
 
