@@ -1,4 +1,4 @@
-<?php require(__DIR__ . "/common.php"); ?>
+<?php require("bootstrap.php"); ?>
 <!DOCTYPE html>
 <html lang="">
 	<head>
@@ -243,7 +243,6 @@
 		<script>google.charts.load('current', {'packages':['corechart']});</script>
 
 		<script src="<?=asset('js', 'vendor-common.js')?>"></script>
-		<script src="<?=asset('js', 'vendor-map.js')?>"></script>
 		<script src="<?=asset('js', 'site.js')?>"></script>
 
 		<?=showGACode();?>

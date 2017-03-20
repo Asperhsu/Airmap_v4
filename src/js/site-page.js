@@ -64,7 +64,7 @@ function loadLastest(firstTime){
 		}
 
 		$("#loading").hide();
-		setTimeout(loadLastest, 1* 60 * 1000);	//1 min reload
+		setTimeout(loadLastest, 5* 60 * 1000);	//5 min reload
 	}).catch(errorText => {
 		$("#error-msg").find(".msg").text(errorText).end().show();
 		$("#container").hide();

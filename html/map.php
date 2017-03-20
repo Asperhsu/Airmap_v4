@@ -1,5 +1,5 @@
 <?php 
-require(__DIR__ . "/common.php");
+require("bootstrap.php");
 $msg = getMsg();
 ?>
 <!DOCTYPE html>

@@ -1,0 +1,16 @@
+{
+    "name": "aspertw/taiwan-airmap",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Asper Hsu",
+            "email": "asperwon@gmail.com"
+        }
+    ],
+    "require": {
+        "google/cloud": "^0.24.0"
+    },
+    "autoload": {
+    	"files": ["script/common.php"]
+    }
+}

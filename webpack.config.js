@@ -12,6 +12,7 @@ module.exports = {
 		],
 		list: __dirname + "/src/js/list-page",
 		site: __dirname + "/src/js/site-page",
+		widget: __dirname + "/src/js/widget-page",
 		"vendor-common": ["jquery",  "moment"],
 		"vendor-map": [
 			"vue", "bootstrap-switch", "bootstrap-slider", 
@@ -41,10 +42,6 @@ module.exports = {
 	plugins: [
 	    new ExtractTextPlugin('[name].css'),
 		new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-tw/),
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ["vendor-map", "vendor-common"],
-            minChunks: Infinity
-        }),
 	    new webpack.ProvidePlugin({
 	        $: 'jquery',
 	        jQuery: 'jquery',

@@ -71,7 +71,11 @@ module.exports = {
 			}
 			
 			return html.join('');
-		}
+		},
+		widget: function(name, row){
+			var url = "/widget/create/" + row.SiteGroup + '$' + row.uniqueKey;
+			return "<a href='" + url + "' target='_blank'><span class='glyphicon glyphicon-dashboard'></span></a>";
+		},
 	},
 	generate: {
 		table: function(title, head, body){

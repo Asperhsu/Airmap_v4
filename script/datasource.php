@@ -1,5 +1,5 @@
 <?php
-require("./common.php");
+require("bootstrap.php");
 
 $urlInfo = parse_url($_SERVER['REQUEST_URI']);
 

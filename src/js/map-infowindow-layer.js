@@ -20,9 +20,11 @@ InfoWindowLayer.prototype.setSite = function(Site){
 	this.position = Site.getMarker().getPosition();
 
 	var indepPageLink = "/site#" + Site.getProperty('SiteGroup') + '$' + Site.getIdentity();
+	var widgetPageLink = "/widget/create/" + Site.getProperty('SiteGroup') + '$' + Site.getIdentity();
 	var $container = $("#" + this.containerID);
 	$container.find(".iw-name").text( Site.getTitle() );
 	$container.find(".indep-page").attr('href', indepPageLink );
+	$container.find(".widget-page").attr('href', widgetPageLink );
 	
 	//sinica ranking
 	var ranking = Site.getProperty('reliableRanking');
@@ -61,6 +63,9 @@ InfoWindowLayer.prototype.onAdd = function() {
 			'<div class="iw-footer">',
 				'<div class="iw-name"></div>',
 				'<div class="iw-link">',
+					'<a href="" target="_blank" class="widget-page" title="widget">',
+						'<span class="glyphicon glyphicon-dashboard"></span>',
+					'</a>',
 					'<a class="line-chart" data-lang="historyChart" title="historyChart">',
 						'<span class="glyphicon glyphicon-stats"></span>',
 					'</a>',

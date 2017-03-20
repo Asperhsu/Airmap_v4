@@ -1,5 +1,5 @@
 <?php
-require("../common.php");
+require("bootstrap.php");
 
 $Memcache = getMemcacheInstance();
 $Memcache->flush();

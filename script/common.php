@@ -1,9 +1,4 @@
 <?php
-include(__DIR__ . "/../env.php");
-date_default_timezone_set('Asia/Taipei');
-
-$memcacheKeyPrefix = 'nGVA2HhYph5i1b8Byx8642Gw4s3ug1li';
-
 function getMemCacheInstance(){
 	$Memcache = new Memcached;
 
@@ -16,14 +11,14 @@ function getMemCacheInstance(){
 }
 
 function memcacheGet($name){
-	global $memcacheKeyPrefix;
+	$memcacheKeyPrefix = env('MEMCACHED_PREFIX');
 	$memcache = getMemCacheInstance();
 
 	return $memcache->get($memcacheKeyPrefix . $name);
 }
 
 function memcacheSet($name, $data, $expireSecs=300){
-	global $memcacheKeyPrefix;
+	$memcacheKeyPrefix = env('MEMCACHED_PREFIX');
 	$memcache = getMemCacheInstance();
 
 	return $memcache->set($memcacheKeyPrefix.$name, $data, $expireSecs);
@@ -45,10 +40,10 @@ function jsonResponse($response){
 }
 
 function fetchDatasource($url, $query=''){
-	$token = @getenv("DS_TOKEN", true) ?: getenv("DS_TOKEN");
+	$token = env("DS_TOKEN");
 	$prefix = "https://datasource.airmap.asper.tw/";
+	
 	if( !strlen($token) ){ return false; }
-
 	$resource  = $url . '?token=' . $token;
 	$resource .= strlen($query) ? '&'.$query : '';
 
@@ -61,4 +56,35 @@ function fetchDatasource($url, $query=''){
 	
 	$response = file_get_contents($prefix . $resource, false, $context);
 	return $response;
+}
+
+function env($index){
+	return defined($index) ? constant($index) : false;
+}
+
+function asset($folder, $path){
+	if( $_SERVER['SERVER_NAME'] == "airmap.g0v.asper.tw" ){
+		$prefix = "https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/";
+		return $prefix . $path;
+	}
+
+	return '/' . $folder . '/' . $path;
+}
+
+function showGACode(){
+echo <<<EOT
+<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-55384149-4', 'auto');
+			ga('send', 'pageview');
+		</script>\r\n
+EOT;
+}
+
+function getMsg(){
+	//TODO getmsg
+	return null;
 }

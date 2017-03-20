@@ -1,4 +1,4 @@
-<?php require(__DIR__ . "/common.php"); ?>
+<?php require("bootstrap.php"); ?>
 <!DOCTYPE html>
 <html lang="">
 	<head>
@@ -90,6 +90,7 @@
 						<th data-field="Data.Temperature" data-class="Temperature" data-sortable="true">Temp</th>
 						<th data-field="Data.Humidity" data-class="Humidity" data-sortable="true">RH</th>
 						<th data-field="LatLng" data-class="LatLng" data-formatter="bsTable.formatter.location">Location</th>
+						<th data-class="widget" data-formatter="bsTable.formatter.widget">Widget</th>
 						<th data-field="reliableRanking" data-class="ranking" data-sortable="true" data-formatter="bsTable.formatter.ranking">Ranking</th>
 						<th data-field="supposeStatus" data-class="supposeStatus" data-sortable="true" data-formatter="bsTable.formatter.status">Analysis</th>
 						<th data-field="Data.Create_at" data-class="Create_at" data-sortable="true" data-formatter="bsTable.formatter.updateTime">Updated At</th>
