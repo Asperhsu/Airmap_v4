@@ -102,12 +102,12 @@ InfoWindowLayer.prototype.onAdd = function() {
 	function cancelEvent(e) {
 		e.cancelBubble = true;
 		if (e.stopPropagation) e.stopPropagation();
-	} 
+	}
 	
-	google.maps.event.addDomListener(document.querySelector('.iw-link a'), 'click', function(e){
+	google.maps.event.addDomListener(document.querySelector('.line-chart'), 'click', function(e){
 		var $el =  $(e.target);		
 		var isA = $el.is('a') && $el.hasClass("line-chart");
-		var parentIsA = $el.parents('a').length && $el.parents('a').hasClass("line-chart");		
+		var parentIsA = $el.parents('a').length && $el.parents('a').hasClass("line-chart");
 		if( isA || parentIsA ){ 
 			$body.trigger("openNavigator", ['siteChart']);
 			$body.trigger("showHistoryChart", [self.Site]);

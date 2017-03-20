@@ -53,7 +53,8 @@ function fetchSite(){
 
 function getWidgetUrl($op){
 	global $group, $id;
-	return sprintf("http://%s/widget/%s/%s$%s", $_SERVER['HTTP_HOST'], $op, $group, $id);
+	$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https' : 'http';
+	return sprintf("%s://%s/widget/%s/%s$%s", $protocol, $_SERVER['HTTP_HOST'], $op, $group, $id);
 }
 
 function loadTemplate($name){
