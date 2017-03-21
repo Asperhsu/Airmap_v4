@@ -51,10 +51,10 @@ function fetchSite(){
 	return $site;
 }
 
-function getWidgetUrl($op){
+function getWidgetUrl($type){
 	global $group, $id;
-	$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https' : 'http';
-	return sprintf("%s://%s/widget/%s/%s$%s", $protocol, $_SERVER['HTTP_HOST'], $op, $group, $id);
+	$protocol = $_SERVER['HTTPS'] == "on" ? 'https' : 'http';
+	return sprintf("%s://%s/widget/%s/%s$%s", $protocol, $_SERVER['HTTP_HOST'], $type, $group, $id);
 }
 
 function loadTemplate($name){
@@ -63,4 +63,9 @@ function loadTemplate($name){
 	include($templatePath."/template_head.php"); 
 	include($templatePath.'/'.$name.'.php');
 	include($templatePath."/template_foot.php");
+}
+
+function getIframeHtml($type, $height=200){
+	$url = getWidgetUrl($type);
+	return sprintf('<iframe width="100%%" height="%s" frameborder="0" src="%s"></iframe>', $height, $url);
 }

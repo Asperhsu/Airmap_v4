@@ -6,7 +6,7 @@
 ?>
 
 <style>
-	body{ overflow-x: hidden; overflow-y: auto; cursor: default; }
+	body{ overflow-x: hidden; overflow-y: hidden; cursor: default; }
 	.header{ text-align: center; padding: 8px 0; }
 	.header img{ height:25px; }
 
@@ -17,7 +17,9 @@
 </style>
 
 <div class="header">
-	<a href="/site#<?=$group."$".$id?>"><img src="https://i.imgur.com/IWqy7yh.png" alt="g0v icon"></a>
+	<a href="/site#<?=$group."$".$id?>" title="site detail page" target="g0vDetail">
+		<img src="https://i.imgur.com/IWqy7yh.png" alt="g0v icon">
+	</a>
 </div>
 
 <div class="content">
