@@ -28,6 +28,7 @@
 			<th>名稱</th>
 			<td><?=$site['SiteName']?></td>
 		</tr>
+		<?php if(isset($site['Data']['Temperature'])):?>
 		<tr>
 			<th>溫度</th>
 			<td>
@@ -35,6 +36,8 @@
 				<span class="unit">℃</span>
 			</td>
 		</tr>
+		<?php endif;?>
+		<?php if(isset($site['Data']['Humidity'])):?>
 		<tr>
 			<th>濕度</th>
 			<td>
@@ -42,6 +45,8 @@
 				<span class="unit">%</span>
 			</td>
 		</tr>
+		<?php endif;?>
+		<?php if(isset($site['Data']['Dust2_5'])):?>
 		<tr>
 			<th>PM 2.5</th>
 			<td>
@@ -50,6 +55,7 @@
 				<span class="unit">μg/m<sup>3</sup></span>
 			</td>
 		</tr>
+		<?php endif;?>
 		<tr>
 			<th>更新時間</th>
 			<td>

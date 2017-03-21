@@ -7,7 +7,7 @@
 
 <style>
 	body{ overflow-x: hidden; overflow-y: auto; cursor: default; }
-	.header{ padding: 8px 5px 0; }
+	.header{ padding: 8px 5px 0; min-height: 32px; }
 	.header > div { width: 49%; display: inline-block; margin-right: -4px; }
 	
 
@@ -36,19 +36,25 @@
 </style>
 
 <div class="header">
+	<?php if(isset($site['Data']['Temperature'])):?>
 	<div title="溫度">
 		<span class="value"><?=$site['Data']['Temperature']?></span>
 		<span class="unit">℃</span>
 	</div>
+	<?php endif;?>
+	<?php if(isset($site['Data']['Humidity'])):?>
 	<div class="text-right" title="濕度">
 		<span class="value"><?=$site['Data']['Humidity']?></span>
 		<span class="unit">%</span>
 	</div>
+	<?php endif;?>
 </div>
 
 <div class="marker pm25color">
 	<p class="name"><?=$site['SiteName']?></p>
+	<?php if(isset($site['Data']['Dust2_5'])):?>
 	<p class="value"><?=$site['Data']['Dust2_5']?></p>
+	<?php endif;?>
 </div>
 
 <div class="footer">

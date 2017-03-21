@@ -4,6 +4,6 @@
 		<script src="<?=asset('js', 'vendor-common.js')?>"></script>
 		<script src="<?=asset('js', 'widget.js')?>"></script>
 
-		<!-- <?=showGACode();?> -->
+		<?=showGACode();?>
 	</body>
 </html>
