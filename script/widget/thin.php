@@ -23,10 +23,10 @@
 	.label-border { border: 1px solid #888; color: #4F595D; }
 	
 	.item .label { display: inline-block; width: 100%; }
-	.item .value-container { text-align: center; }
+	.item .value-container { text-align: center; font-size: 0.9em;}
 	.item .unit { font-size: 0.8em; }
 	
-	.item.pm25 .value{ font-size: 1.2em; }
+	.item.pm25 .value{ font-size: 1.3em; }
 	.pm25color{ border: 1px solid #4F595D; color: #000;  }
 
 	.item-container > div { width: 50%; padding: 0 2px; display: inline-block; margin-right: -4px; }
