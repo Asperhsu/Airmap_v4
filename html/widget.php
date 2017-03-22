@@ -20,6 +20,10 @@ switch($op){
 		$site = fetchSite();
 		loadTemplate('marker');
 		break;
+	case 'thin':
+		$site = fetchSite();
+		loadTemplate('thin');
+		break;
 }
 
 

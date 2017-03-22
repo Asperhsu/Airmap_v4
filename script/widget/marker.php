@@ -6,10 +6,9 @@
 ?>
 
 <style>
-	body{ overflow-x: hidden; overflow-y: auto; cursor: default; }
+	body{ overflow-x: hidden; overflow-y: hidden; cursor: default; }
 	.header{ padding: 8px 5px 0; min-height: 32px; }
 	.header > div { width: 49%; display: inline-block; margin-right: -4px; }
-	
 
 	.marker { 
 		margin: -10px auto 0; 

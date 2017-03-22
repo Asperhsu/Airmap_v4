@@ -1,7 +1,8 @@
 <style>
 	.widget { padding-bottom: 1em; border-bottom: 1px solid #eee; }
-	.widget .preview { border: 1px solid #333; margin: 0 auto; }
+	.widget .preview { border: 1px solid #333; margin: 20px auto; }
 	.widget-marker .preview { width: 230px; }
+	.widget-thin .preview { width: 120px; }
 </style>
 
 <div class="container">
@@ -37,12 +38,31 @@
 		</div>
 		<div class="col-sm-8">
 			<h3>醒目圖示</h3>
+			<p>圖示隨著頁面寬度自動調整，高度需與寬度接近1:1比例</p>
 
 			<span class="label label-primary">建議尺寸</span>
 			<pre>高度比寬度小10px. Ex: width: 230px => height: 220px</pre>
 
 			<span class="label label-success">Code</span>
 			<pre><?=htmlspecialchars(getIframeHtml('marker', '220'));?></pre>
+		</div>
+	</div>
+
+	<div class="row widget widget-thin">
+		<div class="col-sm-4 text-center">
+			<div class="preview">
+				<?=getIframeHtml('thin', '150');?>
+			</div>
+		</div>
+		<div class="col-sm-8">
+			<h3>狹窄</h3>
+			<p>適合寬度不大的版面使用，最低寬度需求 120px</p>
+
+			<span class="label label-primary">建議尺寸</span>
+			<pre>height: 150px</pre>
+
+			<span class="label label-success">Code</span>
+			<pre><?=htmlspecialchars(getIframeHtml('thin', '150'));?></pre>
 		</div>
 	</div>
 </div>

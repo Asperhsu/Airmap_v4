@@ -11,23 +11,12 @@ if(site){
 
 		return {human, local};
 	})();
+
+	$(".pm25color").css('background-color', pm25color);
+	$(".humanTime").text(createAt.human).attr('title', createAt.local);
 }
 
 var Widget = {};
-
-Widget.text = {
-	boot: function(){
-		$(".pm25color").css('background-color', pm25color);
-		$(".humanTime").text(createAt.human).attr('title', createAt.local);
-	}
-}
-
-Widget.marker = {
-	boot: function(){
-		$(".pm25color").css('background-color', pm25color);
-		$(".humanTime").text(createAt.human).attr('title', createAt.local);
-	}
-}
 
 //boot
 var widgetType = $("body").data('widget-type');
