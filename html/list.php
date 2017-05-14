@@ -54,7 +54,7 @@
 					<button type="button" class="btn btn-default" data-group="lass-maps">LASS MAPS</button>
 					<button type="button" class="btn btn-default" data-group="asus-airbox">Asus Airbox</button>
 					<button type="button" class="btn btn-default" data-group="edimax-airbox">Edimax Airbox</button>
-					<button type="button" class="btn btn-default" data-group="epa">EPA</button>
+					<!--<button type="button" class="btn btn-default" data-group="epa">EPA</button>-->
 					<button type="button" class="btn btn-default" data-group="independent">g0v Independent</button>
 					<button type="button" class="btn btn-default" data-group="probecube">g0v Probecube</button>
 				</div>

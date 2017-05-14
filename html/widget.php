@@ -50,14 +50,14 @@ function fetchSite(){
 	}
 
 	$site = json_decode($response, true);
-	if(!$site){ die("site Not Found"); }
+	if(!$site){ throw new Exception('Site Not Found'); }
 
 	return $site;
 }
 
 function getWidgetUrl($type){
 	global $group, $id;
-	$protocol = $_SERVER['HTTPS'] == "on" ? 'https' : 'http';
+	$protocol = isHttps() ? 'https' : 'http';
 	return sprintf("%s://%s/widget/%s/%s$%s", $protocol, $_SERVER['HTTP_HOST'], $type, $group, $id);
 }
 

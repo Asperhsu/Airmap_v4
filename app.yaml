@@ -1,5 +1,3 @@
-application: taiwan-airmap
-version: 4-2
 runtime: php55
 api_version: 1
 threadsafe: yes
@@ -46,7 +44,7 @@ handlers:
 
 - url: /list
   script: html/list.php
-  secure: always
+  # secure: always
   
 - url: /site
   script: html/site.php
@@ -57,7 +55,7 @@ handlers:
 
 - url: /.*
   script: html/map.php
-  secure: always
+  # secure: always
 
 
 error_handlers:

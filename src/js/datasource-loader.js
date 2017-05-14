@@ -4,7 +4,7 @@ var DataSource = {
 	autoUpdateIntervalms: 5 * 60 * 1000,
 	sources: [
 		// "/json/airmapfeeds.json"
-		"https://api.myjson.com/bins/zbuz5",
+		"//api.myjson.com/bins/zbuz5",
 	],
 	boot: function(){
 		this.loadSources();

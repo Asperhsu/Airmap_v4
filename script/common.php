@@ -42,6 +42,7 @@ function jsonResponse($response){
 function fetchDatasource($url, $query=''){
 	$token = env("DS_TOKEN");
 	$prefix = "https://datasource.airmap.asper.tw/";
+	// $prefix = "http://localhost:9080/";
 	
 	if( !strlen($token) ){ return false; }
 	$resource  = $url . '?token=' . $token;
@@ -49,10 +50,10 @@ function fetchDatasource($url, $query=''){
 
 	$context = stream_context_create(
 		array(
-			'ssl' => array('verify_peer' => false),
+			'ssl' => array('verify_peer' => false, "verify_peer_name" => false),
 			'http' => array( 'method' => 'GET' )
 		)
-	);
+	);	
 	
 	$response = file_get_contents($prefix . $resource, false, $context);
 	return $response;
@@ -87,4 +88,8 @@ EOT;
 function getMsg(){
 	//TODO getmsg
 	return null;
+}
+
+function isHttps(){
+	return $_SERVER['HTTPS'] == "on";
 }
