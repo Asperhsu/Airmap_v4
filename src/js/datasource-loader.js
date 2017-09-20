@@ -3,8 +3,10 @@ var DataSource = {
 	autoUpdateTS: null,
 	autoUpdateIntervalms: 5 * 60 * 1000,
 	sources: [
-		// "/json/airmapfeeds.json"
-		"//api.myjson.com/bins/zbuz5",
+		"//api.myjson.com/bins/1egae1",	// lass
+		"//api.myjson.com/bins/fx5ax",  // g0v
+		"//api.myjson.com/bins/1g8l7d", // edimax
+		"//api.myjson.com/bins/15isbd", // asus
 	],
 	boot: function(){
 		this.loadSources();
