@@ -17,7 +17,7 @@ exports.getAjaxErrorText = function(jqXHR, exception){
 	} else if (jqXHR.status == 500) {
 		msg = 'Internal Server Error [500].';
 	} else if (exception === 'parsererror') {
-		msg = 'Requested JSON parse failed.';
+		msg = 'Requested JSON parse failed. Respnse: ' + jqXHR.responseText;
 	} else if (exception === 'timeout') {
 		msg = 'Time out error.';
 	} else if (exception === 'abort') {
