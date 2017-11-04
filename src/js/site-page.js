@@ -67,6 +67,9 @@ function loadLastest(firstTime){
 		setTimeout(loadLastest, 5* 60 * 1000);	//5 min reload
 	}).catch(errorText => {
 		$("#error-msg").find(".msg").html(errorText).end().show();
+
+		var alternateUrl = 'https://airmap.asper.tw/site#'+siteInfo.group+'$'+siteInfo.id;
+		$("#alternateSite").html('<a href="' + alternateUrl + '">' + alternateUrl + '</a>');
 		$("#container").hide();
 		$("#loading").hide();
 	});

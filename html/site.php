@@ -233,7 +233,8 @@
 				Oops! Something wrong
 			</h1>
 			<h3 class='msg'></h3>
-			<h5>You can copy page url and send to asperwon+airmap@gmail.com.</h5>
+			<h4>You can try alternate site: <span id="alternateSite"></span></h4>
+			<h5>Or You can copy page url and send to asperwon+airmap@gmail.com.</h5>
 		</div>
 
 		<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
