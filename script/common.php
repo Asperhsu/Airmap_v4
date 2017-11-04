@@ -4,7 +4,7 @@ function getMemCacheInstance()
     $Memcache = new Memcached;
 
     if (php_sapi_name() == "cli" ||
-        $_SERVER['HTTP_HOST'] == "airmap.asper.tw" ) {
+        $_SERVER['HTTP_HOST'] == "airmap.asper.tw") {
         $Memcache->addServer("127.0.0.1", 11211);
     }
 
@@ -24,7 +24,7 @@ function memcacheSet($name, $data, $expireSecs = 300)
     $memcacheKeyPrefix = env('MEMCACHED_PREFIX');
     $memcache = getMemCacheInstance();
 
-    return $memcache->set($memcacheKeyPrefix.$name, $data, $expireSecs);
+    return $memcache->set($memcacheKeyPrefix . $name, $data, $expireSecs);
 }
 
 function setExpire($secs = 300)
@@ -47,22 +47,21 @@ function jsonResponse($response)
 function fetchDatasource($url, $query = '')
 {
     $token = env("DS_TOKEN");
-    $prefix = "https://datasource.airmap.asper.tw/";
-    // $prefix = "http://localhost:9080/";
-    
+    $prefix = "https://airmap.asper.tw/";
+
     if (!strlen($token)) {
         return false;
     }
-    $resource  = $url . '?token=' . $token;
-    $resource .= strlen($query) ? '&'.$query : '';
+    $resource = $url . '?token=' . $token;
+    $resource .= strlen($query) ? '&' . $query : '';
 
     $context = stream_context_create(
         array(
             'ssl' => array('verify_peer' => false, "verify_peer_name" => false),
-            'http' => array( 'method' => 'GET' )
+            'http' => array('method' => 'GET')
         )
     );
-    
+
     $response = file_get_contents($prefix . $resource, false, $context);
     return $response;
 }
@@ -77,7 +76,7 @@ function asset($folder, $path)
     if (strpos($_SERVER['SERVER_NAME'], "localhost") !== false) {
         return '/' . $folder . '/' . $path;
     }
-    
+
     $prefix = "https://rawgit.com/Aspertw/Airmap_v4/master/assets/dist/";
     return $prefix . $path;
 }

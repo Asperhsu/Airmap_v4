@@ -48,7 +48,8 @@ exports.getGroups = getGroups;
 function setAnalysisCount(Site){
 	if(!Site){ return false; }
 
-	var status = Site.getProperty('supposeStatus');
+	var status = Site.getProperty('Analysis.status');
+	if (!status) { return false; }
 	
 	if(status === null){ status = 'normal'; }
 	if(status.indexOf('indoor') > -1){ status = 'indoor'; }
@@ -152,7 +153,7 @@ function isInVisibleGroup(actives, Site){
 }
 
 function isInVisibleStatus(actives, Site){
-	var status = Site.getProperty('supposeStatus');
+	var status = Site.getProperty('Analysis.status');
 	
 	status = status === null ? ['normal'] : status.split('|');
 

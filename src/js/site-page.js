@@ -66,10 +66,7 @@ function loadLastest(firstTime){
 		$("#loading").hide();
 		setTimeout(loadLastest, 5* 60 * 1000);	//5 min reload
 	}).catch(errorText => {
-		$("#error-msg").find(".msg").html(errorText).end().show();
-
-		var alternateUrl = 'https://airmap.asper.tw/site#'+siteInfo.group+'$'+siteInfo.id;
-		$("#alternateSite").html('<a href="' + alternateUrl + '">' + alternateUrl + '</a>');
+		$("#error-msg").find(".msg").text(errorText).end().show();
 		$("#container").hide();
 		$("#loading").hide();
 	});
@@ -187,7 +184,7 @@ function genTable(title, data){
 	}
 
 	return [
-		'<div class="col-sm-12 col-md-4">',
+		'<div class="col-sm-12 col-md-6">',
 			'<div class="panel panel-info">',
 				'<div class="panel-heading">',
 					title,
@@ -225,12 +222,12 @@ function initDetailTable(Site){
 		Maker: 				Site.getProperty('Maker'),
 		Lat: 				Site.getProperty('LatLng.lat'),
 		Lng: 				Site.getProperty('LatLng.lng'),
-		ReliableRanking: 	isNullMsg(Site.getProperty('reliableRanking'), 'no ranking'),
-		SupposeStatus: 		isNullMsg(Site.getProperty('supposeStatus'), 'no status'),
+		ReliableRanking: 	isNullMsg(Site.getProperty('Analysis.ranking'), 'no ranking'),
+		SupposeStatus: 		isNullMsg(Site.getProperty('Analysis.status'), 'no status'),
 	};
 
 	$detail.html('');
 	$detail.append( genTable('Property', obj) );
 	$detail.append( genTable('Data', 	 Site.getProperty('Data')) );
-	$detail.append( genTable('Raw Data', Site.getProperty('RawData')) );
+	// $detail.append( genTable('Raw Data', Site.getProperty('RawData')) );
 }

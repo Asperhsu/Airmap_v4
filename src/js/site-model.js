@@ -265,8 +265,8 @@ Site.prototype.getIconSVG = function(){
 	}
 
 	var url = SVGTool.getCircleUrl(color, text);
-	var status = this.getProperty('supposeStatus');
-	if(status !== null){
+	var status = this.getProperty('Analysis.status');
+	if(status){
 		if(status.indexOf('indoor') > -1){ url = SVGTool.getHomeUrl(color, text); }
 		if(status.indexOf('longterm-pollution') > -1){ url = SVGTool.getFactoryUrl(color, text); }
 		if(status.indexOf('shortterm-pollution') > -1){ url = SVGTool.getCloudUrl(color, text); }

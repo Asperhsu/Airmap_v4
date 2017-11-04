@@ -1,4 +1,4 @@
-<?php require("bootstrap.php"); ?>
+<?php require ("bootstrap.php"); ?>
 <!DOCTYPE html>
 <html lang="">
 	<head>
@@ -16,7 +16,7 @@
 		<link rel='shortcut icon' type='image/x-icon' href='https://i.imgur.com/Gro4juQ.png' />
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.css">
-		<link rel="stylesheet" href="<?=asset('css', 'list.css')?>">
+		<link rel="stylesheet" href="<?= asset('css', 'list.css') ?>">
 		<!--[if lt IE 9]>
 			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -52,8 +52,8 @@
 					<button type="button" class="btn btn-default" data-group="lass">LASS</button>
 					<button type="button" class="btn btn-default" data-group="lass-4u">LASS 4U</button>
 					<button type="button" class="btn btn-default" data-group="lass-maps">LASS MAPS</button>
-					<button type="button" class="btn btn-default" data-group="asus-airbox">Asus Airbox</button>
-					<button type="button" class="btn btn-default" data-group="edimax-airbox">Edimax Airbox</button>
+					<button type="button" class="btn btn-default" data-group="asus">Asus Airbox</button>
+					<button type="button" class="btn btn-default" data-group="edimax">Edimax Airbox</button>
 					<!--<button type="button" class="btn btn-default" data-group="epa">EPA</button>-->
 					<button type="button" class="btn btn-default" data-group="independent">g0v Independent</button>
 					<button type="button" class="btn btn-default" data-group="probecube">g0v Probecube</button>
@@ -91,8 +91,8 @@
 						<th data-field="Data.Humidity" data-class="Humidity" data-sortable="true">RH</th>
 						<th data-field="LatLng" data-class="LatLng" data-formatter="bsTable.formatter.location">Location</th>
 						<th data-class="widget" data-formatter="bsTable.formatter.widget">Widget</th>
-						<th data-field="reliableRanking" data-class="ranking" data-sortable="true" data-formatter="bsTable.formatter.ranking">Ranking</th>
-						<th data-field="supposeStatus" data-class="supposeStatus" data-sortable="true" data-formatter="bsTable.formatter.status">Analysis</th>
+						<th data-field="Analysis.ranking" data-class="ranking" data-sortable="true" data-formatter="bsTable.formatter.ranking">Ranking</th>
+						<th data-field="Analysis.status" data-class="supposeStatus" data-sortable="true" data-formatter="bsTable.formatter.status">Analysis</th>
 						<th data-field="Data.Create_at" data-class="Create_at" data-sortable="true" data-formatter="bsTable.formatter.updateTime">Updated At</th>
 					</tr>
 				</thead>
@@ -127,9 +127,9 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.10.1/bootstrap-table.min.js"></script>
 		<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyCDRRT8it4AZpwbORhHeqoi2qrWDmQqD48"></script>
 		
-		<script src="<?=asset('js', 'vendor-common.js')?>"></script>
-		<script src="<?=asset('js', 'list.js')?>"></script>
+		<script src="<?= asset('js', 'vendor-common.js') ?>"></script>
+		<script src="<?= asset('js', 'list.js') ?>"></script>
 
-		<?=showGACode();?>
+		<?= showGACode(); ?>
 	</body>
 </html>

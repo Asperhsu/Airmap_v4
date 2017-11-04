@@ -1,5 +1,5 @@
 <?php 
-require("bootstrap.php");
+require ("bootstrap.php");
 $msg = getMsg();
 ?>
 <!DOCTYPE html>
@@ -18,13 +18,13 @@ $msg = getMsg();
 		<title data-lang="pageTitle">g0v零時空汙觀測網</title>
 		<link rel='shortcut icon' type='image/x-icon' href='https://i.imgur.com/Gro4juQ.png' />
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
-		<link rel="stylesheet" href="<?=asset('css', 'map.css')?>">
+		<link rel="stylesheet" href="<?= asset('css', 'map.css') ?>">
 	</head>
 	<body>
-		<?php if( !is_null($msg) ):?>
+		<?php if (!is_null($msg)) : ?>
 		<style>#container{ height: calc(100% - 2em); top: 2em; }</style>
-		<div id="msg"><?=$msg;?></div>
-		<?php endif;?>
+		<div id="msg"><?= $msg; ?></div>
+		<?php endif; ?>
 
 		<div id="container">
 			<div id="loading" class="loading">
@@ -47,6 +47,11 @@ $msg = getMsg();
 				<a href='/recruit' class="popover right">
 					<div class="arrow"></div>
 					<div class="popover-content" data-lang="recruit">自造站點募集中</div>
+				</a>
+			</div>
+			<div id="fb-bot" title="Facebook Messenger 機器人">
+				<a href="https://m.me/g0vairmap" target="_blank">
+					<img src="https://static.xx.fbcdn.net/rsrc.php/v3/yM/r/a_HNTVVyh4W.png" alt="Facebook Messenger Bot" class="img-responsive">
 				</a>
 			</div>
 		
@@ -425,10 +430,10 @@ $msg = getMsg();
 		<script src="https://www.gstatic.com/charts/loader.js"></script>
 		<script>google.charts.load('current', {'packages':['corechart']});</script>
 
-		<script src="<?=asset('js', 'vendor-common.js')?>"></script>
-		<script src="<?=asset('js', 'vendor-map.js')?>"></script>
-		<script src="<?=asset('js', 'map.js')?>"></script>
+		<script src="<?= asset('js', 'vendor-common.js') ?>"></script>
+		<script src="<?= asset('js', 'vendor-map.js') ?>"></script>
+		<script src="<?= asset('js', 'map.js') ?>"></script>
 
-		<?=showGACode();?>
+		<?= showGACode(); ?>
 	</body>
 </html>

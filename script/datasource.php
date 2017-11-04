@@ -1,24 +1,25 @@
 <?php
-require("bootstrap.php");
+require ("bootstrap.php");
 
 $urlInfo = parse_url($_SERVER['REQUEST_URI']);
 
-if( strpos($urlInfo['path'], ".json") ){
-	$jsonType = call_user_func(function() use ($urlInfo){
+if (strpos($urlInfo['path'], ".json")) {
+	$jsonType = call_user_func(function () use ($urlInfo) {
 		$matches = [];
 		preg_match("/\/json\/([a-zA-Z0-9\-]+).json/", $urlInfo['path'], $matches);
 		return isset($matches[1]) ? $matches[1] : null;
 	});
 
-	if( !strlen($jsonType) ){
+	if (!strlen($jsonType)) {
 		jsonResponse([]);
 		syslog(LOG_WARNING, "jsonType is empty");
 		exit;
 	}
 
-	$response = memcacheGet($jsonType);
-	if( $response === false ){
-		$url = $jsonType . ".json";
+	// $response = memcacheGet($jsonType);
+	$response = false;
+	if ($response === false) {
+		$url = $urlInfo['path'];
 		$query = isset($urlInfo['query']) ? $urlInfo['query'] : '';
 		$response = fetchDatasource($url, $query);
 		memcacheSet($jsonType, $response);
@@ -26,14 +27,14 @@ if( strpos($urlInfo['path'], ".json") ){
 }
 
 
-if( strpos($urlInfo['path'], "query") ){
-	$queryType = call_user_func(function() use ($urlInfo){
-		$matches = [];
-		preg_match("/\/json\/([a-zA-Z0-9\-]+)/", $urlInfo['path'], $matches);
-		return isset($matches[1]) ? $matches[1] : null;
-	});
+if (strpos($urlInfo['path'], "query")) {
+	// $queryType = call_user_func(function() use ($urlInfo){
+	// 	$matches = [];
+	// 	preg_match("/\/json\/([a-zA-Z0-9\-]+)/", $urlInfo['path'], $matches);
+	// 	return isset($matches[1]) ? $matches[1] : null;
+	// });
 
-	$url = $queryType;
+	$url = $urlInfo['path'];
 	$query = isset($urlInfo['query']) ? $urlInfo['query'] : '';
 	$response = fetchDatasource($url, $query);
 }
